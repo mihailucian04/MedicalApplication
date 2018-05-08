@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace MedicalApplication.Models.ModelsDefinitions
 {
-    public class AppointmentModel:BaseModel
+    public class PacientBedListModel:BaseModel
     {
         public Guid PatientGuid { get; set; }
-        public Guid MedicGuid { get; set; }
-        public DateTime Date { get; set; }
-        public int Status { get; set; }
+        public Guid BedGuid { get; set; }
 
         [ForeignKey("PatientGuid")]
-        public  virtual PatientModel Patient { get; set; }
+        public virtual PatientModel Patient { get; set; }
 
-        [ForeignKey("MedicGuid")]
-        public virtual MedicModel Medic { get; set; }
+        [ForeignKey("BedGuid")]
+        public virtual BedModel Bed { get; set; }
     }
 }
