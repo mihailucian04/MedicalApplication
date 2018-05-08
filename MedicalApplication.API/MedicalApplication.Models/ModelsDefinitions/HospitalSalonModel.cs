@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MedicalApplication.Models.ModelsDefinitions
 {
-    public class RegistrationModel:BaseModel
+    public class HospitalSalonModel : BaseModel
     {
-        public int BedCount { get; set; }
+        public int Number { get; set; }
 
         public Guid DepartmentGuid { get; set; }
 

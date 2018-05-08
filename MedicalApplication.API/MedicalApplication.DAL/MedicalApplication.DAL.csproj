@@ -76,7 +76,15 @@
   <ItemGroup>
     <Compile Include="BaseDbContext.cs" />
     <Compile Include="EFDbContext.cs" />
+    <Compile Include="Mappings\AppointmentModelMigration.cs" />
+    <Compile Include="Mappings\BedModelMigration.cs" />
+    <Compile Include="Mappings\DepartmentModelMigration.cs" />
+    <Compile Include="Mappings\HospitalSalonModelMigration.cs" />
+    <Compile Include="Mappings\LaboratoryModelMigration.cs" />
     <Compile Include="Mappings\MedicModelMapping.cs" />
+    <Compile Include="Mappings\PacientBedListModelMigration.cs" />
+    <Compile Include="Mappings\PatientModelMapping.cs" />
+    <Compile Include="Mappings\RegistrationModelMigration.cs" />
     <Compile Include="Migrations\201804211430325_IdentityAdded.cs" />
     <Compile Include="Migrations\201804211430325_IdentityAdded.Designer.cs">
       <DependentUpon>201804211430325_IdentityAdded.cs</DependentUpon>
@@ -88,6 +96,42 @@
     <Compile Include="Migrations\201805071246062_RolesAdded.cs" />
     <Compile Include="Migrations\201805071246062_RolesAdded.Designer.cs">
       <DependentUpon>201805071246062_RolesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080944346_updateMedicModel.cs" />
+    <Compile Include="Migrations\201805080944346_updateMedicModel.Designer.cs">
+      <DependentUpon>201805080944346_updateMedicModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080954481_AddPatientModel.cs" />
+    <Compile Include="Migrations\201805080954481_AddPatientModel.Designer.cs">
+      <DependentUpon>201805080954481_AddPatientModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081028021_AddDepartmentModel.cs" />
+    <Compile Include="Migrations\201805081028021_AddDepartmentModel.Designer.cs">
+      <DependentUpon>201805081028021_AddDepartmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081058303_AddRegistrationModel.cs" />
+    <Compile Include="Migrations\201805081058303_AddRegistrationModel.Designer.cs">
+      <DependentUpon>201805081058303_AddRegistrationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081111290_AddAppointmentModel.cs" />
+    <Compile Include="Migrations\201805081111290_AddAppointmentModel.Designer.cs">
+      <DependentUpon>201805081111290_AddAppointmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081123297_AddHospitalSalonModel.cs" />
+    <Compile Include="Migrations\201805081123297_AddHospitalSalonModel.Designer.cs">
+      <DependentUpon>201805081123297_AddHospitalSalonModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081126562_AddBedModel.cs" />
+    <Compile Include="Migrations\201805081126562_AddBedModel.Designer.cs">
+      <DependentUpon>201805081126562_AddBedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081130444_AddPacientBedListModel.cs" />
+    <Compile Include="Migrations\201805081130444_AddPacientBedListModel.Designer.cs">
+      <DependentUpon>201805081130444_AddPacientBedListModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805081136068_AddLaboratoryModel.cs" />
+    <Compile Include="Migrations\201805081136068_AddLaboratoryModel.Designer.cs">
+      <DependentUpon>201805081136068_AddLaboratoryModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +155,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805071246062_RolesAdded.resx">
       <DependentUpon>201805071246062_RolesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080944346_updateMedicModel.resx">
+      <DependentUpon>201805080944346_updateMedicModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080954481_AddPatientModel.resx">
+      <DependentUpon>201805080954481_AddPatientModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081028021_AddDepartmentModel.resx">
+      <DependentUpon>201805081028021_AddDepartmentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081058303_AddRegistrationModel.resx">
+      <DependentUpon>201805081058303_AddRegistrationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081111290_AddAppointmentModel.resx">
+      <DependentUpon>201805081111290_AddAppointmentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081123297_AddHospitalSalonModel.resx">
+      <DependentUpon>201805081123297_AddHospitalSalonModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081126562_AddBedModel.resx">
+      <DependentUpon>201805081126562_AddBedModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081130444_AddPacientBedListModel.resx">
+      <DependentUpon>201805081130444_AddPacientBedListModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081136068_AddLaboratoryModel.resx">
+      <DependentUpon>201805081136068_AddLaboratoryModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
