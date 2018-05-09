@@ -11,27 +11,38 @@
             <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern" required>
             <label data-error="Invalid email!">Email</label>
           </div>
+        </div>
+        <div class="row">
           <div class="input-field col s6">
             <input class="validate" type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required minlength="3">
             <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s6">
             <input class="validate" type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName" required minlength="3">
             <label [attr.data-error]="FirstName.errors!=null?(FirstName.errors.required?'Required field!':'Minimum 3 characters needed'):''">First Name</label>
           </div>
+        </div>
+        <div class="row">
           <div class="input-field col s6">
             <input class="validate" type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName" required minlength="3">
             <label [attr.data-error]="LastName.errors!=null?(LastName.errors.required?'Required field!':'Minimum 3 characters needed'):''">Last Name</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s12">
-            <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+            <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Create your account</button>
           </div>
         </div>
       </form>
+      <div class="text-center">
+        <span> Already have an account?
+          <a class="test-info fa-external-link" href="/login">Login</a>
+        </span>
+      </div>
     </div>
   </div>
 </div>

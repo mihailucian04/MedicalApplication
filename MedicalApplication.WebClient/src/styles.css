@@ -19,10 +19,11 @@ button.btn-submit:focus,button.btn-submit:hover{
 }
 
 .login-register .login-register-box {
-    max-width: 400px;
-    min-width: 280px;
+    max-width: 600px;
+    min-width: 400px;
     margin: 0 auto;
     vertical-align: middle;
+    padding: 10px;
 }
 
 .login-register {
