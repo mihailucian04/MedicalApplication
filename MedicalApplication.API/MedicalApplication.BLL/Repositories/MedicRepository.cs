@@ -37,5 +37,19 @@ namespace MedicalApplication.BLL.Repositories
 
             return false;
         }
+
+        public async Task<IEnumerable<MedicModel>> GetAllMedics()
+        {
+            var medics = await _service.GetAllAsync();
+
+            return medics;
+        }
+
+        public async Task<MedicModel> GetMedicByID(Guid medicID)
+        {
+            var medic = await _service.FindAsync(t => t.Guid == medicID);
+
+            return medic;
+        }
     }
 }
