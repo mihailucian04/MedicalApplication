@@ -1,14 +1,28 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-// import { UserComponent } from './components/user/user.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
+import { RootComponent } from './components/root/root.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 export const appRoutes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: SignInComponent },
-    { path: 'signup', component: SignUpComponent },
+    { path: '', component: SignInComponent },
+    { path: 'user/login', component: SignInComponent },
+    { path: 'user/signup', component: SignUpComponent} ,
+    {path: 'dashboard',  component: RootComponent , children: [
+        {path: 'home', component: HomeComponent, pathMatch: 'full'},
+        // {path: 'profile', component: ProfileComponent},
+        // {path: 'table', component: TableComponent},
+        // {path: 'notification', component: NotificationComponent},
+        // {path: 'alert', component: SweetAlertComponent},
+         {path: 'settings', component: SettingsComponent, pathMatch: 'full'}
+        // {path: 'components/price-table', component: PriceTableComponent},
+        // {path: 'components/panels', component: PanelsComponent},
+        // {path: 'components/wizard', component: WizardComponent}
+      ]},
+      { path: '**', component: PageNotFoundComponent }
     // {
     //     path: 'signup', component: UserComponent,
     //     children: [{ path: '', component: SignUpComponent }]
@@ -17,6 +31,5 @@ export const appRoutes: Routes = [
     //     path: 'login', component: UserComponent,
     //     children: [{ path: '', component: SignInComponent }]
     // },
-     { path : '', redirectTo: '/home', pathMatch : 'full'}
-
 ];
+export const routing = RouterModule.forRoot(appRoutes);

@@ -1,33 +1,44 @@
-<div class="back">
-  <div class="login-register">
-    <div class="login-register-box white">
-      <form class="col s12" #userLoginForm="ngForm" (ngSubmit)="OnLogin(userLoginForm)">
-        <div class="text-center">
-          <mat-icon>account_circle</mat-icon>
-          <h4 class="m-t-0">Login to eHospital</h4>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern" required>
-            <label data-error="Invalid email!">Email</label>
+<div class="backgroundColor">
+  <div class="container">
+    <div class="row">
+      <app-header></app-header>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+        <div class="card">
+          <div class="card-header">
+            <mat-icon>account_circle</mat-icon>
+            <h4>Login to eHospital</h4>
+          </div>
+          <div class="card-form">
+            <!-- <div class="form-row">
+               <i class="material-icons">face</i>
+               <mat-input-container color="accent">
+                 <input type="text" matInput placeholder="First Name"/>
+               </mat-input-container>
+             </div> -->
+            <div class="form-row">
+              <i class="material-icons">email</i>
+              <mat-input-container color="accent">
+                <input type="text" matInput placeholder="Email address" />
+              </mat-input-container>
+            </div>
+            <div class="form-row">
+              <i class="material-icons">lock_outline</i>
+              <mat-input-container color="accent">
+                <input type="password" matInput placeholder="Password" />
+              </mat-input-container>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button mat-button (click)="loginBtn()">Login</button>
+          </div>
+          <div class="text-center">
+            <span> Don't have an account?
+              <a class="test-info fa-external-link" href="/user/signup">Register</a>
+            </span>
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input class="validate" type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required minlength="3">
-            <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <button [disabled]="!userLoginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
-          </div>
-        </div>
-      </form>
-      <div class="text-center">
-        <span > Don't have an account? 
-          <a class="test-info fa-external-link" href="/signup">Register</a>
-        </span>
       </div>
     </div>
   </div>
