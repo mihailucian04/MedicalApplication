@@ -47,6 +47,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -56,7 +57,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatInputModule,
     NoopAnimationsModule,
     MatMenuModule,
-    FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     routing

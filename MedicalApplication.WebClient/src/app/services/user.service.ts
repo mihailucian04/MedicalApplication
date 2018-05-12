@@ -6,9 +6,11 @@ import { User } from '../components/user/user.model';
 
 @Injectable()
 export class UserService {
+  readonly namePattern = '^[a-zA-Z0-9._%+-]{2,}$';
+  readonly emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
   readonly rootUrl = 'http://localhost:49498/';
   constructor(private http: HttpClient) { }
-  ast;
+  user: User;
   registerUser(user: User): Observable<User> {
     const body: User = {
       Password: user.Password,

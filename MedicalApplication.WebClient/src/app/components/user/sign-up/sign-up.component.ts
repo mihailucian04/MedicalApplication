@@ -11,30 +11,55 @@ import { NgForm } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+  user: User;
 
-  constructor() { }
+  constructor(public userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.resetForm();
   }
 
   registerBtn() {
+    this.userService.registerUser(this.user)
+     .subscribe(
+       val => {
+        this.toastr.success('User registration successful');
+        this.resetForm();
+      },
+      response => {
+        this.toastr.error('User registration error');
+        this.toastr.error(response.message);
+      },
+      () => {
+      }
+    );
   }
 
-  // OnSubmit(form: NgForm) {
-  //  this.userService.registerUser(form.value)
-  //  .subscribe(
-  //    val => {
-  //     this.toastr.success('User registration successful');
-  //     this.resetForm(form);
-  //   },
-  //   response => {
-  //     this.toastr.error('User registration error');
-  //     this.toastr.error(response.message);
-  //   },
-  //   () => {
-  //   }
-  // );
- // }
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.reset();
+    }
+    this.user = {
+      Password: '',
+      Email: '',
+      FirstName: '',
+      LastName: ''
+    };
+  }
+    // OnSubmit(form: NgForm) {
+    //  this.userService.registerUser(form.value)
+    //  .subscribe(
+    //    val => {
+    //     this.toastr.success('User registration successful');
+    //     this.resetForm(form);
+    //   },
+    //   response => {
+    //     this.toastr.error('User registration error');
+    //     this.toastr.error(response.message);
+    //   },
+    //   () => {
+    //   }
+    // );
+    // }
 
 }

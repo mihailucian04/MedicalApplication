@@ -3,7 +3,7 @@
     <div class="row">
       <app-header></app-header>
     </div>
-    <div class="row">
+    <form class="row"  #userLoginForm="ngForm">
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
         <div class="card">
           <div class="card-header">
@@ -11,27 +11,21 @@
             <h4>Login to eHospital</h4>
           </div>
           <div class="card-form">
-            <!-- <div class="form-row">
-               <i class="material-icons">face</i>
-               <mat-input-container color="accent">
-                 <input type="text" matInput placeholder="First Name"/>
-               </mat-input-container>
-             </div> -->
             <div class="form-row">
               <i class="material-icons">email</i>
               <mat-input-container color="accent">
-                <input type="text" matInput placeholder="Email address" />
+                <input type="text" matInput placeholder="Email address"  name="Email" [(ngModel)]="user.Email" required pattern="userService.emailPattern"/>
               </mat-input-container>
             </div>
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
               <mat-input-container color="accent">
-                <input type="password" matInput placeholder="Password" />
+                <input type="password" matInput placeholder="Password" required name="Password" [(ngModel)]="user.Password"/>
               </mat-input-container>
             </div>
           </div>
           <div class="card-footer">
-            <button mat-button (click)="loginBtn()">Login</button>
+            <button mat-button type="submit" [disabled]="!userLoginForm.valid" (click)="loginBtn()">Login</button>
           </div>
           <div class="text-center">
             <span> Don't have an account?
@@ -40,6 +34,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
