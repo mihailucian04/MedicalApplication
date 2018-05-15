@@ -29,7 +29,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
-
+import { PatientService } from './services/patient.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +77,7 @@ import { PatientComponent } from './components/patient/patient.component';
      CdkTableModule,
      MatTableModule
     ],
-  providers: [UserService, SettingsService, RoutesService],
+  providers: [UserService, SettingsService, RoutesService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
