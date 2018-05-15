@@ -137,6 +137,10 @@
     <Compile Include="Migrations\201805151641047_DeletedFlagAddedOnPatientModel.Designer.cs">
       <DependentUpon>201805151641047_DeletedFlagAddedOnPatientModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151945000_sync.cs" />
+    <Compile Include="Migrations\201805151945000_sync.Designer.cs">
+      <DependentUpon>201805151945000_sync.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151641047_DeletedFlagAddedOnPatientModel.resx">
       <DependentUpon>201805151641047_DeletedFlagAddedOnPatientModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151945000_sync.resx">
+      <DependentUpon>201805151945000_sync.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
