@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace MedicalApplication.API.Controllers
 {
+    [Authorize]
     public class MedicController : BaseApiController
     {
         private BllUnitOfWork _bll;

@@ -28,5 +28,7 @@ namespace MedicalApplication.Models.ModelsDefinitions
         [MaxLength(20)]
         public string Telephone { get; set; }
         public string PatientFile { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
+
