@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'FirstName', 'LastName', 'CNP', 'Sex','Address'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -23,18 +23,21 @@ export class PatientComponent implements OnInit {
 }
 
 export interface Element {
-  name: string;
+  FirstName: string;
+  LastName:string;
+  CNP: string;
+  Sex:number;
   position: number;
-  weight: number;
-  symbol: string;
+  Address:string;
+  
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+  {position: 1, FirstName: 'Hydrogen', LastName:"",CNP: 1.0079, Sex:"",Address:""},
+  {position: 2, FirstName: 'Helium', LastName:"",CNP: 4.0026, Sex:"",Address:""},
+  {position: 3, FirstName: 'Lithium', LastName:"",CNP: 6.941, Sex:"",Address:""},
+  {position: 4, FirstName: 'Beryllium', LastName:"",CNP: 9.0122, Sex:"",Address:"",},
+  {position: 5, FirstName: 'Boron', LastName:"",CNP: 10.811, Sex:"",Address:""},
+  {position: 20, FirstName: 'Calcium', LastName:"",CNP: 40.078, Sex:"",Address:""},
 ];
 
