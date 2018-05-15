@@ -5,6 +5,7 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { RootComponent } from './components/root/root.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PatientComponent } from './components/patient/patient.component';
 
 
 export const appRoutes: Routes = [
@@ -13,7 +14,7 @@ export const appRoutes: Routes = [
     { path: 'user/signup', component: SignUpComponent} ,
     {path: 'dashboard',  component: RootComponent , children: [
         {path: 'home', component: HomeComponent, pathMatch: 'full'},
-        // {path: 'profile', component: ProfileComponent},
+         {path: 'patient', component: PatientComponent, pathMatch: 'full'},
         // {path: 'table', component: TableComponent},
         // {path: 'notification', component: NotificationComponent},
         // {path: 'alert', component: SweetAlertComponent},

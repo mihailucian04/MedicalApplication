@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {MatButtonModule, MatCheckboxModule, MatIcon, MatIconModule, MatFormFieldModule,
-   MatInputModule, MatMenuModule} from '@angular/material';
+   MatInputModule, MatMenuModule, MatTableModule} from '@angular/material';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,6 +27,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RoutesService } from './services/routes.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { PatientComponent } from './components/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SidebarComponent,
     ProfileComponent,
     SettingsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
@@ -57,12 +60,23 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatInputModule,
     NoopAnimationsModule,
     MatMenuModule,
+    MatTableModule,
+    CdkTableModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     routing
   ],
-  exports: [MatButtonModule, MatCheckboxModule, MatCardModule, MatIconModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule],
+  exports:
+    [MatButtonModule,
+     MatCheckboxModule,
+     MatCardModule,
+     MatIconModule,
+     MatFormFieldModule,
+     MatInputModule,
+     MatMenuModule,
+     CdkTableModule,
+     MatTableModule
+    ],
   providers: [UserService, SettingsService, RoutesService],
   bootstrap: [AppComponent]
 })

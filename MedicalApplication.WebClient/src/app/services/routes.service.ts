@@ -6,7 +6,7 @@ export class RoutesService {
   constructor() { }
   private ROUTES = [
   { path: 'home', title: 'Home', icon: 'dashboard', children: null },
-  // { path: '/profile', title: 'User Profile', icon: 'person', children: null },
+   { path: 'patient', title: 'Patients', icon: 'person', children: null },
   // { path: 'table', title: 'Table List', icon: 'content_paste', children: null },
   // { path: '#component', id: 'component', title: 'Component', icon: 'apps', children: [
   //     {path: 'components/price-table', title: 'Price Table', icon: 'PT'},
