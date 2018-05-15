@@ -104,5 +104,32 @@ namespace MedicalApplication.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [Route("api/account/{username}")]
+        public async Task<IHttpActionResult> GetAccountByUsername(string username)
+        {
+            var user = await this.AppUserManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var roleID = user.Roles.FirstOrDefault();
+
+            var role = _bll.IdentityRoleRepository.GetRole(roleID.RoleId);
+
+            dynamic viewModel = new Object();
+
+            if (role.Name.Equals("Medic"))
+            {
+                viewModel = await _bll.MedicRepository.GetMedicByID(user.User_ID);
+            }
+
+            //TODO: Complete this with for all the roles
+
+            return Ok(viewModel);
+        }
     }
 }
