@@ -23,15 +23,20 @@
       </ng-container>
 
       <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <ng-container matColumnDef="salon">
+        <mat-header-cell *matHeaderCellDef> Salon </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.salon}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bedNr">
+        <mat-header-cell *matHeaderCellDef> Bed Number </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bedNr}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
