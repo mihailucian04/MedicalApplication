@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'surname', 'salon', 'bedNr'];
+  displayedColumns = ['position', 'FirstName', 'LastName', 'CNP', 'Sex','Address'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
@@ -23,18 +23,20 @@ export class PatientComponent implements OnInit {
 }
 
 export interface Element {
-  name: string;
-  surname: string;
+  FirstName: string;
+  LastName:string;
+  CNP: string;
+  Sex:number;
   position: number;
-  salon: string;
-  bedNr: number;
+  Address:string;
+
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Daniel',surname: 'Ionescu', salon: '2A', bedNr: 1},
-  {position: 2, name: 'Gheorghe',surname: 'Bacinovic', salon:'4B', bedNr: 1},
-  {position: 3, name: 'Mariana',surname: 'Stanciu', salon: '2A', bedNr: 3},
-  {position: 4, name: 'Roxana',surname: 'Tecau', salon: '2A', bedNr: 4},
-  {position: 5, name: 'Valentin',surname: 'Mergea', salon: '1A', bedNr: 3},
-  {position: 6, name: 'Ion',surname: 'Novac', salon: '3C', bedNr: 2},
+  {position: 1, FirstName: 'Valentin', LastName:"Birac",CNP: "1930202394021", Sex:1,Address:"Str.Macinului"},
+  {position: 2, FirstName: 'Mariana', LastName:"Gacinovic",CNP: "2830102394021", Sex:2,Address:"Str.Pinului"},
+  {position: 3, FirstName: 'Alina', LastName:"Mergea",CNP: "2730202394021", Sex:2,Address:"Str.Victor Ansac"},
+  {position: 4, FirstName: 'Gheorghe', LastName:"Tecau",CNP: "1880502394021", Sex:1,Address:"Str.Bulevardul Macului"},
+  {position: 5, FirstName: 'Ion', LastName:"Stanciu",CNP: "1730202394021", Sex:1,Address:"Str.Mihai Eminescu"},
+  {position: 6, FirstName: 'Darius', LastName:"Ionescu",CNP: "1630302394021", Sex:1,Address:"Str.Lugojului"},
 ];
