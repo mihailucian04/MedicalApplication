@@ -30,6 +30,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientService } from './services/patient.service';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { PatientService } from './services/patient.service';
     ProfileComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    PatientComponent
+    PatientComponent,
+    PatientDetailsComponent
   ],
   imports: [
     BrowserModule,
