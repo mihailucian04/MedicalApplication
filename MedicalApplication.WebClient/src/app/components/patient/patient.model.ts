@@ -9,7 +9,5 @@ export class Patient {
 	Telephone: string;
 	PatientFile:string;
 	IsDeleted: boolean;
-
-
 }
 

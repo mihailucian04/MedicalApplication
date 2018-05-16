@@ -10,42 +10,53 @@
 
     <mat-table #table [dataSource]="dataSource">
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-      </ng-container>
 
-      <!-- Name Column -->
+      <!-- FirstName Column -->
       <ng-container matColumnDef="FirstName">
         <mat-header-cell *matHeaderCellDef> FirstName </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.FirstName}} </mat-cell>
       </ng-container>
 
-      <!-- Weight Column -->
+      <!-- LastName Column -->
       <ng-container matColumnDef="LastName">
         <mat-header-cell *matHeaderCellDef> LastName </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.LastName}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column -->
+      <!-- CNP Column -->
       <ng-container matColumnDef="CNP">
         <mat-header-cell *matHeaderCellDef> CNP </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.CNP}} </mat-cell>
       </ng-container>
 
+      <!-- Sex Column -->
       <ng-container matColumnDef="Sex">
         <mat-header-cell *matHeaderCellDef> Sex </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.Sex}} </mat-cell>
       </ng-container>
 
-       <ng-container matColumnDef="Address">
+      <!-- DateTime Column -->
+      <ng-container matColumnDef="DateTime">
+        <mat-header-cell *matHeaderCellDef>DateTime </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.DateTime}} </mat-cell>
+      </ng-container>
+      
+      <!-- Address Column -->
+      <ng-container matColumnDef="Address">
         <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.Address}} </mat-cell>
       </ng-container>
+
+
+      <!-- Telephone Column -->
+      <ng-container matColumnDef="Telephone">
+        <mat-header-cell *matHeaderCellDef> Telephone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Telephone}} </mat-cell>
+      </ng-container>
+
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
-<!-- </div> -->
+  <!-- </div> -->
