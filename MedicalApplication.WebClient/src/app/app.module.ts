@@ -30,6 +30,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientService } from './services/patient.service';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarModule } from 'angular-calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { PatientService } from './services/patient.service';
     ProfileComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    PatientComponent
+    PatientComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { PatientService } from './services/patient.service';
     MatMenuModule,
     MatTableModule,
     CdkTableModule,
+    CalendarModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     routing
@@ -75,6 +79,7 @@ import { PatientService } from './services/patient.service';
      MatInputModule,
      MatMenuModule,
      CdkTableModule,
+     CalendarModule,
      MatTableModule
     ],
   providers: [UserService, SettingsService, RoutesService, PatientService],
