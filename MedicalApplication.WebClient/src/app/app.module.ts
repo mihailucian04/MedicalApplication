@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {MatButtonModule, MatCheckboxModule, MatIcon, MatIconModule, MatFormFieldModule,
-   MatInputModule, MatMenuModule, MatTableModule} from '@angular/material';
+   MatInputModule, MatMenuModule, MatTableModule, MatSelectModule} from '@angular/material';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import { UserService } from './services/user.service';
 import { RouterModule } from '@angular/router';
@@ -29,6 +29,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -61,10 +64,12 @@ import { PatientComponent } from './components/patient/patient.component';
     NoopAnimationsModule,
     MatMenuModule,
     MatTableModule,
+    MatSelectModule,
     CdkTableModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    routing
+    routing,
+    HttpClientModule
   ],
   exports:
     [MatButtonModule,
@@ -75,9 +80,11 @@ import { PatientComponent } from './components/patient/patient.component';
      MatInputModule,
      MatMenuModule,
      CdkTableModule,
-     MatTableModule
+     MatTableModule,
+     MatSelectModule
     ],
-  providers: [UserService, SettingsService, RoutesService],
+  providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+     UserService, AuthGuard, SettingsService, RoutesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

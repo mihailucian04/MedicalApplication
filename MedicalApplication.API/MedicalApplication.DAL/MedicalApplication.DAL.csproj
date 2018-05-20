@@ -133,6 +133,10 @@
     <Compile Include="Migrations\201805081136068_AddLaboratoryModel.Designer.cs">
       <DependentUpon>201805081136068_AddLaboratoryModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805201238535_latest.cs" />
+    <Compile Include="Migrations\201805201238535_latest.Designer.cs">
+      <DependentUpon>201805201238535_latest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805081136068_AddLaboratoryModel.resx">
       <DependentUpon>201805081136068_AddLaboratoryModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805201238535_latest.resx">
+      <DependentUpon>201805201238535_latest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

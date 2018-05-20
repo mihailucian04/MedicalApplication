@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { UserService } from '../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,10 +12,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
+  sexValues = [{gender: 'Male', value: 1}, {gender: 'Female', value: 2}];
   user: User;
-
-  constructor(public userService: UserService, private toastr: ToastrService) { }
+  constructor(public userService: UserService, private toastr: ToastrService,
+  private router: Router) {
+   }
 
   ngOnInit() {
     this.resetForm();
@@ -24,9 +27,10 @@ export class SignUpComponent implements OnInit {
      .subscribe(
        val => {
         this.toastr.success('User registration successful');
+        this.router.navigate(['/user/login']);
         this.resetForm();
       },
-      response => {
+      (response: HttpErrorResponse) => {
         this.toastr.error('User registration error');
         this.toastr.error(response.message);
       },
@@ -42,8 +46,10 @@ export class SignUpComponent implements OnInit {
     this.user = {
       Password: '',
       Email: '',
-      FirstName: '',
-      LastName: ''
+      Firstname: '',
+      Lastname: '',
+      Sex: 1,
+      Speciality: ''
     };
   }
     // OnSubmit(form: NgForm) {

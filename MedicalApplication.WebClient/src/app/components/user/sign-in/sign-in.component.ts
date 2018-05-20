@@ -4,6 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { NgForm } from '@angular/forms';
 import { User } from '../user.model';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,21 +12,30 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  user = { Email : '', Pasword : ''};
-  constructor(public userService: UserService, private toastr: ToastrService) {
+
+  user = { Email : '', Password : ''};
+  constructor(public userService: UserService, private toastr: ToastrService
+      , private router: Router) {
    }
 
   ngOnInit() {
-    // this.resetForm();
   }
 
-  // resetForm(form?: NgForm) {
-  //   if (form != null) {
-  //     form.reset();
-  //   }
-  // }
-
   loginBtn() {
+    this.userService.userAuthentication(this.user.Email, this.user.Password)
+    .subscribe(
+      (data: any) => {
+        this.toastr.success('LogedIn successful');
+        this.router.navigate(['/dashboard/home']);
+        localStorage.setItem('access_token', data.access_token);
+     },
+     (err: HttpErrorResponse) => {
+       this.toastr.error('The email or the password is incorrect.');
+       console.log(err);
+     },
+     () => {
+     });
+
   }
 
 

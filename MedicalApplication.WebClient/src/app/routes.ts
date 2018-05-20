@@ -6,13 +6,14 @@ import { RootComponent } from './components/root/root.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 export const appRoutes: Routes = [
     { path: '', component: SignInComponent },
     { path: 'user/login', component: SignInComponent },
     { path: 'user/signup', component: SignUpComponent} ,
-    {path: 'dashboard',  component: RootComponent , children: [
+    {path: 'dashboard',  component: RootComponent , canActivate: [AuthGuard], children: [
         {path: 'home', component: HomeComponent, pathMatch: 'full'},
          {path: 'patient', component: PatientComponent, pathMatch: 'full'},
         // {path: 'table', component: TableComponent},

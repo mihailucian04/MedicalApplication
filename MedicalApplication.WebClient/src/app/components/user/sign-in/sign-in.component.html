@@ -14,7 +14,7 @@
             <div class="form-row">
               <i class="material-icons">email</i>
               <mat-input-container color="accent">
-                <input type="text" matInput placeholder="Email address"  name="Email" [(ngModel)]="user.Email" required pattern="userService.emailPattern"/>
+                <input type="text" matInput placeholder="Email address"  name="Email" [(ngModel)]="user.Email" required [pattern]="userService.emailPattern"/>
               </mat-input-container>
             </div>
             <div class="form-row">
