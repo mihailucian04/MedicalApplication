@@ -14,6 +14,6 @@ export class HttpReq {
         this.noAuthReqHeader = new HttpHeaders({'No-Auth': 'True'}); // ,
        // 'Access-Control-Allow-Origin': '*',
        // ' Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'});
-        this.rootUrl = 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
+        this.rootUrl = 'http://medappapi.azurewebsites.net'; // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
     }
 }
