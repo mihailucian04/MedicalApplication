@@ -30,7 +30,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
 import { AuthGuard } from './auth/auth.guard';
-import { AuthInterceptor } from './auth/auth.interceptor';
+// import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 @NgModule({
@@ -83,7 +83,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
      MatTableModule,
      MatSelectModule
     ],
-  providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  providers: [  // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
      UserService, AuthGuard, SettingsService, RoutesService],
   bootstrap: [AppComponent]
 })

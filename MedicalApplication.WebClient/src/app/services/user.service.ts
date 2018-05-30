@@ -9,7 +9,6 @@ import { HttpReq } from './httpReq.class';
 export class UserService extends HttpReq {
   readonly namePattern = '^[a-zA-Z0-9._%+-]{2,}$';
   readonly emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
-
   constructor(private http: HttpClient) {
     super();
   }
@@ -27,11 +26,13 @@ export class UserService extends HttpReq {
   }
 
   userAuthentication(userName, password) {
-    const data = 'username=' + userName + '&password=' + password + '&grant_type=password';
+    const data = 'grant_type=password&username=' + userName + '&password=' + password;
     const link = this.rootUrl + '/token';
-    return this.http.post(link, data, {
-      headers: new HttpHeaders( { 'Content-Type': 'application/x-www-form-urlencoded',
-      'No-Auth': 'True' } )});
+    // tslint:disable-next-line:no-var-keyword
+    // tslint:disable-next-line:prefer-const
+    let head = new HttpHeaders()
+    .set('Content-Type' , 'application/X-www-form-urlencoded');
+    return this.http.post(link, data, { headers: head} );
   }
 
 }

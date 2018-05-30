@@ -7,13 +7,16 @@ export class HttpReq {
     readonly noAuthReqHeader: HttpHeaders;
     readonly rootUrl: string ;
     constructor() {
-        this.reqHeader = new HttpHeaders({// 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-        // 'No-Auth': 'True'
-        });
-        this.noAuthReqHeader = new HttpHeaders({'No-Auth': 'True'}); // ,
-       // 'Access-Control-Allow-Origin': '*',
-       // ' Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'});
-        this.rootUrl = 'http://medappapi.azurewebsites.net'; // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
+        this.reqHeader = new HttpHeaders()
+        .set('Content-Type' , 'application/x-www-form-urlencoded')
+          .set('No-Auth' , 'True');
+        this.noAuthReqHeader = new HttpHeaders()
+        .append('No-Auth' , 'True');
+        this.rootUrl = 'http://localhost:49498';
+        // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
+    }
+
+    getTokenHeader() {
+        return new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     }
 }
