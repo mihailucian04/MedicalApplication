@@ -26,6 +26,7 @@ export class UserService extends HttpReq {
   }
 
   userAuthentication(userName, password) {
+    localStorage.removeItem('access_token');
     const data = 'grant_type=password&username=' + userName + '&password=' + password;
     const link = this.rootUrl + '/token';
     // tslint:disable-next-line:no-var-keyword
