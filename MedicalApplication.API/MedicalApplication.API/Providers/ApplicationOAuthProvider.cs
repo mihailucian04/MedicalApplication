@@ -70,6 +70,8 @@ namespace MedicalApplication.API.Providers
         {
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
+           // context.OwinContext.Response.Headers.Add("Access-Control-Allow-Methods", new[] { "GET,POST,OPTIONS,DELETE,PUT" });
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             ApplicationUserModel user = await userManager.FindAsync(context.UserName, context.Password);

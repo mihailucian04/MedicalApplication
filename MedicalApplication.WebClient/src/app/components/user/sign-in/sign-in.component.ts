@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { NgForm } from '@angular/forms';
 import { User } from '../user.model';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,28 +12,30 @@ import { User } from '../user.model';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  user: User;
-  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
-  isLoginError = false;
-  constructor(private router: Router, private userService: UserService) { }
+
+  user = { Email : '', Password : ''};
+  constructor(public userService: UserService, private toastr: ToastrService
+      , private router: Router) {
+   }
 
   ngOnInit() {
-    this.resetForm();
   }
 
-  resetForm(form?: NgForm) {
-    if (form != null) {
-      form.reset();
-    }
-    this.user = {
-      Password: '',
-      Email: '',
-      FirstName: '',
-      LastName: ''
-    };
-  }
+  loginBtn() {
+    this.userService.userAuthentication(this.user.Email, this.user.Password)
+    .subscribe(
+      (data: any) => {
+        this.toastr.success('LogedIn successful');
+        this.router.navigate(['/dashboard/home']);
+        localStorage.setItem('access_token', data.access_token);
+     },
+     (err: HttpErrorResponse) => {
+       this.toastr.error('The email or the password is incorrect.');
+       console.log(err);
+     },
+     () => {
+     });
 
-  OnLogin(form: NgForm) {
   }
 
 
