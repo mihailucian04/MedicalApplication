@@ -31,8 +31,12 @@ export class SignUpComponent implements OnInit {
         this.resetForm();
       },
       (response: HttpErrorResponse) => {
+        if (response.error.Message) {
+        this.toastr.error(response.error.Message);
+        } else {
         this.toastr.error('User registration error');
-        this.toastr.error(response.message);
+        }
+
       },
       () => {
       }

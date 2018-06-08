@@ -36,4 +36,9 @@ export class UserService extends HttpReq {
     return this.http.post(link, data, { headers: head} );
   }
 
+  getDataAboutUser(email) {
+    localStorage.removeItem('medic_guid');
+    return this.http.get(this.getDataAboutLoggedMedicRoute(email));
+  }
+
 }

@@ -71,7 +71,7 @@ namespace MedicalApplication.API.Controllers
             var medicExists = await _bll.MedicRepository.CheckIfMedicExists(medicRegistrationViewModel.Firstname, medicRegistrationViewModel.Lastname);
 
             if (medicExists)
-                return BadRequest();
+                return BadRequest("This medic already exists in database!");
 
             var medicModel = medicRegistrationViewModel.ToMedicModel();
             medicModel.Guid = Guid.NewGuid();
@@ -105,10 +105,14 @@ namespace MedicalApplication.API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpGet]
         [Route("api/account/{username}")]
         public async Task<IHttpActionResult> GetAccountByUsername(string username)
         {
+            var base64EncodedBytes = System.Convert.FromBase64String(username);
+            username = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+
             var user = await this.AppUserManager.FindByNameAsync(username);
 
             if (user == null)

@@ -1,7 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { HttpRequest } from 'selenium-webdriver/http';
 
-
 export class HttpReq {
     readonly reqHeader: HttpHeaders;
     readonly noAuthReqHeader: HttpHeaders;
@@ -15,8 +14,15 @@ export class HttpReq {
         this.rootUrl = 'http://localhost:49498';
         // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
     }
-
+    getAllPatientsPathByMedicRoute(medicGuid: string ): string {
+        return this.rootUrl + '/api/patient/get-patients-by-medic/{' + medicGuid + '}';
+    }
     getTokenHeader() {
         return new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    }
+
+    getDataAboutLoggedMedicRoute(emailLogged: string): string {
+        const uint8array = btoa(emailLogged);
+        return this.rootUrl + '/api/account/' + uint8array ;
     }
 }
