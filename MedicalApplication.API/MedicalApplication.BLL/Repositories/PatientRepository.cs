@@ -44,6 +44,20 @@ namespace MedicalApplication.BLL.Repositories
             return false;
         }
 
+        public async Task<int> GetNumberOfPatientsByMedicGuid(Guid medicGuid)
+        {
+            var count = await _service.CountAllAsync(t => t.MedicGuid == medicGuid && !t.IsDeleted);
+
+            return count;
+        }
+
+        public async Task<IEnumerable<PatientModel>> GetPatientsByMedicGuid(Guid medicGuid, int itemsPerPage, int page)
+        {
+            var patientList = await _service.FindAllAsync(t => t.MedicGuid == medicGuid && !t.IsDeleted,itemsPerPage,page);
+
+            return patientList;
+        }
+
         public async Task<bool> UpdatePatient(PatientModel patient)
         {
             var patientUpdated = await _service.UpdateAsync(patient);

@@ -29,6 +29,18 @@ namespace MedicalApplication.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/patient/get-patients-by-medic/{itemsPerPage}/{page}/{medicGuid}")]
+        public async Task<IHttpActionResult> GetPatientsListByMedicGuid(int itemsPerPage, int page, Guid medicGuid)
+        {
+            var patientList = await _bll.PatientRepository.GetPatientsByMedicGuid(medicGuid, itemsPerPage,page);
+            var count = await _bll.PatientRepository.GetNumberOfPatientsByMedicGuid(medicGuid);
+
+            var result =new { Data= patientList, AllPatients= count };
+
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("api/patient/get-patient/{patientGuid}")]
         public async Task<IHttpActionResult> GetPatientByGuid(Guid patientGuid)
         {
@@ -55,7 +67,7 @@ namespace MedicalApplication.API.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/patient/update-patient")]
 
         public async Task<IHttpActionResult> UpdatePatient([FromBody]PatientModel patient)
@@ -73,7 +85,7 @@ namespace MedicalApplication.API.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("api/patient/delete-patient/{patientGuid}")]
         public async Task<IHttpActionResult> DeletePatient(Guid patientGuid)
         {

@@ -26,7 +26,16 @@ export class HttpReq {
         return this.rootUrl + '/api/account/' + uint8array ;
     }
 
+    getPageAllPatientsPathByMedicRoute(medicGuid: string, items: number, page: number): string {
+        return this.rootUrl + '/api/patient/get-patients-by-medic/' + items + '/' + page + '/' + medicGuid ;
+    }
+
     getAddPatientRoute() {
         return this.rootUrl + '/api/patient/add-patient';
+    }
+
+
+    getDeletePatientRoute(patientGuid: string) {
+        return this.rootUrl + '/api/patient/delete-patient/' + patientGuid;
     }
 }

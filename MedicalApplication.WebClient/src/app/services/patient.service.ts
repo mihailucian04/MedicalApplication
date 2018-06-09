@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpReq } from './httpReq.class';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { PatientModel } from '../components/patient/patient.component';
+import { PatientModel, APIPatientResponse } from '../components/patient/patient.component';
 
 @Injectable()
 export class PatientService extends HttpReq {
 
+  deletePatients(patientGuid: string): any {
+      return this.http.delete(this.getDeletePatientRoute(patientGuid));
+  }
   constructor(private http: HttpClient) {
     super();
    }
-  getAllPatients(medicGuid: string): Observable<PatientModel[]> {
-    return this.http.get<PatientModel[]>(this.getAllPatientsPathByMedicRoute(medicGuid));
+  getAllPatients(medicGuid: string, items: number, page: number): Observable<APIPatientResponse> {
+    return this.http.get<APIPatientResponse>(this.getPageAllPatientsPathByMedicRoute(medicGuid, items, page));
   }
 
   addPacient(patient: PatientModel) {

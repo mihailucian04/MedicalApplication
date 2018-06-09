@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatPaginatorIntl } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { PatientService } from '../../services/patient.service';
 import { ISubscription } from 'rxjs/Subscription';
@@ -7,6 +7,7 @@ import { AddPatientDialogComponent } from './add-patient-dialog/add-patient-dial
 import { ToastrService } from 'ngx-toastr';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-patient',
@@ -16,10 +17,13 @@ import { Router } from '@angular/router';
 })
 
 export class PatientComponent implements OnInit, OnDestroy, DoCheck {
-  displayedColumns = ['FirstName', 'LastName', 'Sex', 'CNP', 'Address', 'Telephone'];
+  displayedColumns = ['Select', 'FirstName', 'LastName', 'Sex', 'CNP', 'Address', 'Telephone'];
   dataSource: MatTableDataSource<PatientModel>;
   private _selectionSubscription: ISubscription;
   private isDirty = false;
+  private patients: PatientModel[];
+  page = {CurrentPage: 0, TableViewPage: 1, PageSize: 10, Length: 10, PageSizeOption: [10] };
+  isLoaded = false;
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -37,17 +41,21 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
 
   ngDoCheck() {
     if (this.isDirty === true) {
-      this.isDirty = false;
       this.GetAllPatients();
+      this.isDirty = false;
      }
   }
 
   private GetAllPatients() {
-    this._selectionSubscription = this.patientService.getAllPatients(localStorage.getItem('medic_guid'))
+    this._selectionSubscription = this.patientService
+    .getAllPatients(localStorage.getItem('medic_guid'), this.page.PageSize, this.page.TableViewPage)
     .subscribe(
-      (data) => {
-        console.log(data);
-        this.dataSource = new MatTableDataSource(data);
+      (res) => {
+        console.log(res);
+        this.patients = res.Data;
+        this.page.Length = res.AllPatients;
+        this.dataSource = new MatTableDataSource(this.patients);
+        this.isLoaded = true;
      },
      (err: any) => {
 
@@ -70,7 +78,8 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
         Telephone: '',
         PatientFile: '',
         IsDeleted: false,
-        DOB: new Date()
+        DOB: new Date(),
+        LocDeleted: false
       },
       height: '400px',
       width: '500px'
@@ -79,7 +88,6 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
       if (result === true) {
         this.isDirty = true;
       } else {
-        // this.toastr.error('Please try again later!');
       }
       console.log(`Dialog result: ${result}`);
     });
@@ -93,9 +101,54 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
   ngOnDestroy(): void {
     this.unsubscribe();
   }
+
+  isPatientSelectedForDelete() {
+    if ( this.patients) {
+    const t = this.patients.find(x => x.LocDeleted === true);
+    return t;
+  }
+  }
+
+  check(checkbox: any, elem: PatientModel) {
+    const index = this.patients.findIndex(x => x.Guid === elem.Guid);
+    this.patients[index].LocDeleted = checkbox.checked;
+  }
+
+  deletePatient() {
+    this.patients.forEach(patient => {
+      if (patient.LocDeleted === true) {
+      this.patientService.deletePatients(patient.Guid)
+      .subscribe(
+        (data) => {
+          console.log('deleted patient: ' + patient.FirstName);
+          this.isDirty = true;
+        },
+        (err: any) => {
+        },
+        () => {
+        });
+      }
+      });
+  }
+
+  handlePage(event) {
+    console.log(event);
+    if (event.pageIndex > this.page.CurrentPage) {
+      // to next page
+      this.page.CurrentPage = event.pageIndex;
+      this.page.TableViewPage += 1;
+      this.isDirty = true;
+    } else {
+      // to previous page
+      this.page.CurrentPage = event.pageIndex;
+      this.page.TableViewPage -= 1;
+      this.isDirty = true;
+    }
+  }
 }
 
 export interface PatientModel {
+  LocDeleted: boolean;
   Guid: string;
   MedicGuid: string;
   FirstName: string;
@@ -108,4 +161,9 @@ export interface PatientModel {
   PatientFile: string;
   IsDeleted: boolean;
   DOB: Date;
+}
+
+export interface APIPatientResponse {
+  Data: PatientModel[];
+  AllPatients: number;
 }

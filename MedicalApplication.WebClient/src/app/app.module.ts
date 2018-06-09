@@ -5,7 +5,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import { AppComponent } from './app.component';
 import {MatButtonModule, MatCheckboxModule, MatIcon, MatIconModule, MatFormFieldModule,
    MatInputModule, MatMenuModule, MatTableModule, MatSelectModule,
-    MatDialogModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+    MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule} from '@angular/material';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
@@ -75,7 +75,9 @@ import { AddPatientDialogComponent } from './components/patient/add-patient-dial
     HttpClientModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   exports:
     [MatButtonModule,
@@ -90,7 +92,9 @@ import { AddPatientDialogComponent } from './components/patient/add-patient-dial
      MatSelectModule,
      MatDialogModule,
      MatNativeDateModule,
-     MatDatepickerModule
+     MatDatepickerModule,
+     MatPaginatorModule,
+     MatProgressSpinnerModule
     ],
   entryComponents: [AddPatientDialogComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
