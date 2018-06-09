@@ -37,7 +37,7 @@ namespace MedicalApplication.API.Controllers
             return Ok(patientModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("api/patient/add-patient")]
 
         public async Task<IHttpActionResult> AddPatient([FromBody]PatientModel patient)
@@ -50,7 +50,7 @@ namespace MedicalApplication.API.Controllers
             var result = await _bll.PatientRepository.AddPatient(patient);
             if(!result)
             {
-                return InternalServerError();
+                return BadRequest("The CNP of this patient is already in database!");
             }
             return Ok();
         }

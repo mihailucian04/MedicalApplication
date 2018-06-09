@@ -9,6 +9,8 @@ import { HttpReq } from './httpReq.class';
 export class UserService extends HttpReq {
   readonly namePattern = '^[a-zA-Z0-9._%+-]{2,}$';
   readonly emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+  readonly cnpPattern = '^[0-9]{13}$';
+
   constructor(private http: HttpClient) {
     super();
   }
@@ -22,7 +24,7 @@ export class UserService extends HttpReq {
     .set('Sex', user.Sex.toString())
     .set('Speciality', user.Speciality);
      return this.http.post(this.rootUrl + '/api/account/create-medic',
-     body, { headers: this.noAuthReqHeader });
+     body);
   }
 
   userAuthentication(userName, password) {

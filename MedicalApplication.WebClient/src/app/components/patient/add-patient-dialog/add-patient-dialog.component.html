@@ -1,0 +1,73 @@
+<h1 mat-dialog-title>Add patient</h1>
+<div mat-dialog-content >
+  <form #addPatientForm="ngForm">
+    <div class="col-md-6 col-sm-6">
+      <div class="row">
+        <mat-input-container>
+          <input type="text" matInput placeholder="First Name" name="Firstname" [(ngModel)]="data.FirstName" required [pattern]="userService.namePattern"
+          />
+        </mat-input-container>
+      </div>
+      <div class="row">
+        <mat-input-container color="accent">
+          <input type="text" matInput placeholder="Last Name" name="Lastname" [(ngModel)]="data.LastName" required [pattern]="userService.namePattern"
+          />
+        </mat-input-container>
+      </div>
+      <div class="row">
+        <mat-form-field color="accent">
+          <mat-select placeholder="Sex" [(value)]="data.Sex" required>
+            <mat-option *ngFor="let sex of sexValues" [value]="sex.value">
+              {{sex.gender}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-input-container>
+          <input type="text" matInput placeholder="Telephone" name="Telephone" [(ngModel)]="data.Telephone" required/>
+        </mat-input-container>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <div class="row">
+        <mat-input-container>
+          <input type="text" matInput placeholder="CNP" name="CNP" [(ngModel)]="data.CNP" required [pattern]="userService.cnpPattern"
+          />
+        </mat-input-container>
+      </div>
+      <div class="row">
+        <mat-input-container>
+          <input type="text" matInput placeholder="Address" name="Address" [(ngModel)]="data.Address" required/>
+        </mat-input-container>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [value]="data.DOB" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field color="accent">
+          <mat-select placeholder="Assuranced" [(value)]="data.Assuranced" required>
+            <mat-option *ngFor="let assuranced of assurancedValues" [value]="assuranced.value">
+              {{assuranced.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row">
+
+  <div class="col-md-6 col-sm-6"></div>
+  <div class="col-md-6 col-sm-6">
+
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="!addPatientForm.valid" (click)="savePatient()" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+  </div>
+</div>

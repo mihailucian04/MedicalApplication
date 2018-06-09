@@ -25,4 +25,8 @@ export class HttpReq {
         const uint8array = btoa(emailLogged);
         return this.rootUrl + '/api/account/' + uint8array ;
     }
+
+    getAddPatientRoute() {
+        return this.rootUrl + '/api/patient/add-patient';
+    }
 }
