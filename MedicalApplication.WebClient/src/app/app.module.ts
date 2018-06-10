@@ -104,7 +104,7 @@ import { LaboratoryComponent } from './components/laboratory/laboratory.componen
     ],
   entryComponents: [AddPatientDialogComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-     UserService, AuthGuard, SettingsService, RoutesService],
+     UserService, AuthGuard, RoutesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

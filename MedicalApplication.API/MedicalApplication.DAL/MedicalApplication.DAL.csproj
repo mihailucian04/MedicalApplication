@@ -76,11 +76,13 @@
   <ItemGroup>
     <Compile Include="BaseDbContext.cs" />
     <Compile Include="EFDbContext.cs" />
+    <Compile Include="Mappings\AnalysisTypeModelMigration.cs" />
     <Compile Include="Mappings\AppointmentModelMigration.cs" />
     <Compile Include="Mappings\BedModelMigration.cs" />
     <Compile Include="Mappings\DepartmentModelMigration.cs" />
     <Compile Include="Mappings\HospitalSalonModelMigration.cs" />
     <Compile Include="Mappings\LaboratoryModelMigration.cs" />
+    <Compile Include="Mappings\MappingMedicAnalysisModelMigration.cs" />
     <Compile Include="Mappings\MedicModelMapping.cs" />
     <Compile Include="Mappings\PacientBedListModelMigration.cs" />
     <Compile Include="Mappings\PatientModelMapping.cs" />
@@ -137,6 +139,18 @@
     <Compile Include="Migrations\201805151641047_DeletedFlagAddedOnPatientModel.Designer.cs">
       <DependentUpon>201805151641047_DeletedFlagAddedOnPatientModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806101944379_test.cs" />
+    <Compile Include="Migrations\201806101944379_test.Designer.cs">
+      <DependentUpon>201806101944379_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806101954141_AnalusisTypeModel.cs" />
+    <Compile Include="Migrations\201806101954141_AnalusisTypeModel.Designer.cs">
+      <DependentUpon>201806101954141_AnalusisTypeModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806102011076_MappingMedicAnalysisModel.cs" />
+    <Compile Include="Migrations\201806102011076_MappingMedicAnalysisModel.Designer.cs">
+      <DependentUpon>201806102011076_MappingMedicAnalysisModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -189,6 +203,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151641047_DeletedFlagAddedOnPatientModel.resx">
       <DependentUpon>201805151641047_DeletedFlagAddedOnPatientModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806101944379_test.resx">
+      <DependentUpon>201806101944379_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806101954141_AnalusisTypeModel.resx">
+      <DependentUpon>201806101954141_AnalusisTypeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806102011076_MappingMedicAnalysisModel.resx">
+      <DependentUpon>201806102011076_MappingMedicAnalysisModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

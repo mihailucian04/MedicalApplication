@@ -57,9 +57,11 @@
     <Compile Include="ModelsDefinitions\ApplicationUserModel.cs" />
     <Compile Include="ModelsDefinitions\AppointmentModel.cs" />
     <Compile Include="ModelsDefinitions\BedModel.cs" />
+    <Compile Include="ModelsDefinitions\AnalysisTypeModel.cs" />
     <Compile Include="ModelsDefinitions\DepartmentModel.cs" />
     <Compile Include="ModelsDefinitions\HospitalSalonModel.cs" />
     <Compile Include="ModelsDefinitions\LaboratoryModel.cs" />
+    <Compile Include="ModelsDefinitions\MappingMedicAnalysisModel.cs" />
     <Compile Include="ModelsDefinitions\MedicModel.cs" />
     <Compile Include="ModelsDefinitions\PacientBedListModel.cs" />
     <Compile Include="ModelsDefinitions\PatientModel.cs" />
