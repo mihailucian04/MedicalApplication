@@ -34,6 +34,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AddPatientDialogComponent } from './components/patient/add-patient-dial
     PageNotFoundComponent,
     PatientComponent,
     CalendarComponent,
-    AddPatientDialogComponent
+    AddPatientDialogComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
