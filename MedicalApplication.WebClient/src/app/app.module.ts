@@ -30,6 +30,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
@@ -52,6 +53,7 @@ import { AddPatientDialogComponent } from './components/patient/add-patient-dial
     SettingsComponent,
     PageNotFoundComponent,
     PatientComponent,
+    CalendarComponent,
     AddPatientDialogComponent
   ],
   imports: [
