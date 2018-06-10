@@ -17,6 +17,10 @@ export class PatientService extends HttpReq {
     return this.http.get<APIPatientResponse>(this.getPageAllPatientsPathByMedicRoute(medicGuid, items, page));
   }
 
+  getAllPatientsByMedic(medicGuid: string): Observable<PatientModel[]> {
+    return this.http.get<PatientModel[]>(this.getAllPatientsPathByMedicRoute(medicGuid));
+  }
+
   addPacient(patient: PatientModel) {
     const body = new HttpParams()
     .set('FirstName', patient.FirstName)
