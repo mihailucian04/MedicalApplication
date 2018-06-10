@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   sexValues = [{gender: 'Male', value: 1}, {gender: 'Female', value: 2}];
+  specialityValues = [{Role: 'Medic', Label: 'Medic'}, {Role: 'RegistryOffice', Label: 'Registry Office'},
+   {Role: 'LaboratoryAnalysis', Label: 'Laboratory Analysis'}];
   user: User;
   constructor(public userService: UserService, private toastr: ToastrService,
   private router: Router) {
@@ -52,24 +54,9 @@ export class SignUpComponent implements OnInit {
       Email: '',
       Firstname: '',
       Lastname: '',
-      Sex: 1,
-      Speciality: ''
+      Sex: this.sexValues[0].value,
+      Speciality: this.specialityValues[0].Role
     };
   }
-    // OnSubmit(form: NgForm) {
-    //  this.userService.registerUser(form.value)
-    //  .subscribe(
-    //    val => {
-    //     this.toastr.success('User registration successful');
-    //     this.resetForm(form);
-    //   },
-    //   response => {
-    //     this.toastr.error('User registration error');
-    //     this.toastr.error(response.message);
-    //   },
-    //   () => {
-    //   }
-    // );
-    // }
 
 }

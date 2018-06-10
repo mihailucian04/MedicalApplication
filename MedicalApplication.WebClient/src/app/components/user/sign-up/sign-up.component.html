@@ -41,9 +41,14 @@
             </div>
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
-              <mat-input-container color="accent">
-                <input type="text" name="Speciality" [(ngModel)]="user.Speciality" matInput placeholder="Speciality"  required/>
-              </mat-input-container>
+              <mat-form-field color="accent">
+                <!-- <input type="text" name="Speciality" [(ngModel)]="user.Speciality" matInput placeholder="Speciality"  required/> -->
+                <mat-select placeholder="Speciality" [(value)]="user.Speciality" required>
+                  <mat-option *ngFor="let speciality of specialityValues" [value]="speciality.Role">
+                    {{speciality.Label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
             <div class="form-row">
               <i class="material-icons">lock_outline</i>
