@@ -35,6 +35,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { LoadingComponent } from './shared/loading/loading.component';
     PatientComponent,
     CalendarComponent,
     AddPatientDialogComponent,
-    LoadingComponent
+    LoadingComponent,
+    LaboratoryComponent
   ],
   imports: [
     BrowserModule,

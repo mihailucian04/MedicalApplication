@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PatientComponent } from './components/patient/patient.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AuthGuard } from './auth/auth.guard';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
 
 
 export const appRoutes: Routes = [
@@ -18,6 +19,7 @@ export const appRoutes: Routes = [
         {path: 'home', component: HomeComponent, pathMatch: 'full'},
          {path: 'patient', component: PatientComponent, pathMatch: 'full'},
          {path: 'calendar', component: CalendarComponent, pathMatch: 'full'},
+         {path: 'laboratory', component: LaboratoryComponent, pathMatch: 'full'},
         // {path: 'table', component: TableComponent},
         // {path: 'notification', component: NotificationComponent},
         // {path: 'alert', component: SweetAlertComponent},
