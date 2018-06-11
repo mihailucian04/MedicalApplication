@@ -155,6 +155,10 @@
     <Compile Include="Migrations\201806110946378_OtherDetailsAddedOnPatientModel1.Designer.cs">
       <DependentUpon>201806110946378_OtherDetailsAddedOnPatientModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806111026215_UpdateAnalysisTypeModel.cs" />
+    <Compile Include="Migrations\201806111026215_UpdateAnalysisTypeModel.Designer.cs">
+      <DependentUpon>201806111026215_UpdateAnalysisTypeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -219,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806110946378_OtherDetailsAddedOnPatientModel1.resx">
       <DependentUpon>201806110946378_OtherDetailsAddedOnPatientModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111026215_UpdateAnalysisTypeModel.resx">
+      <DependentUpon>201806111026215_UpdateAnalysisTypeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

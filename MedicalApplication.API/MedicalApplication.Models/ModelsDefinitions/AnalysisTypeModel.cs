@@ -12,7 +12,7 @@ namespace MedicalApplication.Models.ModelsDefinitions
 
         public string Result { get; set; }
 
-        public int UM { get; set; }
+        public string UM { get; set; }
 
         public bool Type { get; set; }
 
