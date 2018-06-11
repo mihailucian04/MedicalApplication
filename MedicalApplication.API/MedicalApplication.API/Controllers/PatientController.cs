@@ -41,6 +41,18 @@ namespace MedicalApplication.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/patient/search-patients/{search}/{itemsPerPage}/{page}")]
+        public async Task<IHttpActionResult> GetPatientsByFirstName(string search, int itemsPerPage, int page)
+        {
+            var patientList = await _bll.PatientRepository.GetPatientsBySearch(search, itemsPerPage, page);
+
+            var count = await _bll.PatientRepository.GetNumberOfPatientsBySearch(search);
+            var result = new { Data = patientList, AllPatients = count };
+
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("api/patient/get-patient/{patientGuid}")]
         public async Task<IHttpActionResult> GetPatientByGuid(Guid patientGuid)
         {

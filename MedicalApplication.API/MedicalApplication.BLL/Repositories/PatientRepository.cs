@@ -51,6 +51,20 @@ namespace MedicalApplication.BLL.Repositories
             return count;
         }
 
+        public async Task<IEnumerable<PatientModel>> GetPatientsBySearch(string search, int itemsPerPage, int page)
+        {
+            var patientList = await _service.FindAllAsync(t => t.FirstName.ToLower().Contains(search.ToLower()) && !t.IsDeleted, itemsPerPage, page);
+
+            return patientList;
+        }
+
+        public async Task<int> GetNumberOfPatientsBySearch(string search)
+        {
+            var count = await _service.CountAllAsync(t => t.FirstName.ToLower().Contains(search.ToLower()) && !t.IsDeleted);
+
+            return count;
+        }
+
         public async Task<IEnumerable<PatientModel>> GetPatientsByMedicGuid(Guid medicGuid, int itemsPerPage, int page)
         {
             var patientList = await _service.FindAllAsync(t => t.MedicGuid == medicGuid && !t.IsDeleted,itemsPerPage,page);

@@ -7,6 +7,9 @@ import { PatientModel, APIPatientResponse } from '../components/patient/patient.
 @Injectable()
 export class PatientService extends HttpReq {
 
+  searchAllPatientsByFirstName(search: string, items: number, page: number): Observable<APIPatientResponse> {
+    return this.http.get<APIPatientResponse>(this.getAllPatientsPathByFirstName(search, items, page));
+  }
   deletePatients(patientGuid: string): any {
       return this.http.delete(this.getDeletePatientRoute(patientGuid));
   }
