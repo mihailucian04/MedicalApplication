@@ -29,6 +29,7 @@ namespace MedicalApplication.Models.ModelsDefinitions
         public string Telephone { get; set; }
         public string PatientFile { get; set; }
         public bool IsDeleted { get; set; }
+        public string OtherDetails { get; set; }
     }
 }
 

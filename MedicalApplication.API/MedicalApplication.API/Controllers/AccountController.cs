@@ -96,8 +96,15 @@ namespace MedicalApplication.API.Controllers
             var roles = _bll.IdentityRoleRepository.GetAll();
 
             var currentUser = await UserManager.FindByEmailAsync(applicationModel.Email);
-            var currentRole = roles.ToList().FirstOrDefault(t => t.Name == "Medic");
-            var roleResult = UserManager.AddToRole(currentUser.Id, "Medic");
+
+            if (medicRegistrationViewModel.Speciality == "Medic")
+            {
+                var roleResult = UserManager.AddToRole(currentUser.Id, "Medic");
+            }
+            else
+            {
+                var roleResult = UserManager.AddToRole(currentUser.Id, "RegistryOffice");
+            }
 
             if (!addUserResult.Succeeded)
                 return InternalServerError();
