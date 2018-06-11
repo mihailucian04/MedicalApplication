@@ -18,7 +18,6 @@ namespace ClassLibrary2.Mappings
             Property(t => t.Guid).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(t => t.Name);
             Property(t => t.RangeValue);
-            Property(t => t.Result);
             Property(t => t.Type);
             Property(t => t.UM);
 

@@ -10,8 +10,6 @@ namespace MedicalApplication.Models.ModelsDefinitions
     {
         public string Name { get; set; }
 
-        public string Result { get; set; }
-
         public string UM { get; set; }
 
         public bool Type { get; set; }

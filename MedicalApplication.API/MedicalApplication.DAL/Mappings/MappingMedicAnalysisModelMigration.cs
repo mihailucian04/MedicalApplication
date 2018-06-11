@@ -21,6 +21,7 @@ namespace ClassLibrary2.Mappings
             Property(t => t.MedicGuid);
             Property(t => t.PatientGuid);
             Property(t => t.ProcessAnalysisDate);
+            Property(t => t.Result);
 
             ToTable("MappingMedicAnalysisModel");
         }

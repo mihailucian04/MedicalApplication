@@ -17,6 +17,8 @@ namespace MedicalApplication.Models.ModelsDefinitions
 
         public Guid LaboratoryGuyGuid { get; set; }
 
+        public string Result { get; set; }
+
         public DateTime ProcessAnalysisDate { get; set; }
 
         [ForeignKey("MedicGuid")]
