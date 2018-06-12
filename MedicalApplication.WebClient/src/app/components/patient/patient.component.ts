@@ -66,12 +66,12 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
      });
   }
 
-  openDetails(param1,p) {
+  openDetails(param1, p) {
     console.log('sasd' + param1);
     console.log(  p);
-    const patientDetails=p;
-     //const  dsa = this.patientService.getPatientById(p.Guid);
-     //console.log('dsa = ' + dsa);
+    const patientDetails = p;
+     // const  dsa = this.patientService.getPatientById(p.Guid);
+     // console.log('dsa = ' + dsa);
     const dialogRef = this.dialog.open<PatientDetailsComponent, PatientModel>(PatientDetailsComponent, {
       data: patientDetails,
       height: '400px',
@@ -124,7 +124,7 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   check(checkbox: any, elem: PatientModel) {
-    console.log(checkbox,elem)
+    console.log(checkbox, elem );
     const index = this.patients.findIndex(x => x.Guid === elem.Guid);
     this.patients[index].LocDeleted = checkbox.checked;
   }

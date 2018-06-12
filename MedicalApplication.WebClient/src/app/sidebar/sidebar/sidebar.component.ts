@@ -14,7 +14,7 @@ export const ROUTESs = new InjectionToken<Routes[]>('ROUTES');
   styleUrls: ['./sidebar.component.css']
 })
 
-export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SidebarComponent implements OnInit, OnDestroy {
   public color: string;
   public menuItems;
   public activeFontColor: string;

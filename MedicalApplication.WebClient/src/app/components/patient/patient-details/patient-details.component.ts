@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class PatientDetailsComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     console.log('data=' + this.data);

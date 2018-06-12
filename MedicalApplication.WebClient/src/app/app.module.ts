@@ -63,6 +63,7 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
     AddPatientDialogComponent,
       LoadingComponent,
       AddAnalysisDialogComponentComponent,
+    LaboratoryComponent,
     PatientDetailsComponent
   ],
   imports: [

@@ -1,6 +1,6 @@
 <div class="container">
   <app-navbar title="Laboratory"></app-navbar>
-  <div *ngIf="permission.isMed">
+  <div *ngIf="permission.isMed === true">
     <div class="row">
       <label>Search the patient by first name: </label>
       <mat-input-container>

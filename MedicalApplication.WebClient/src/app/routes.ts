@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PatientComponent } from './components/patient/patient.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AuthGuard } from './auth/auth.guard';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
 
 
 export const appRoutes: Routes = [

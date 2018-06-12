@@ -14,6 +14,15 @@ export class HttpReq {
         this.rootUrl = 'http://localhost:49498';
         // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
     }
+
+    getAnalyzesByItemsPage(items: number, page: number): string {
+               return this.rootUrl + '/api/analyze/' + items + '/' + page;
+           }
+
+         getAddAnalyzezMappingRoute(): any {
+        return this.rootUrl + '/api/analyze/add-analyzeOfPatient';
+     }
+
     getAllPatientsPathByMedicRoute(medicGuid: string ): string {
         return this.rootUrl + '/api/patient/get-patients-by-medic/{' + medicGuid + '}';
     }
@@ -41,4 +50,8 @@ export class HttpReq {
     getPatientById(patientGuid: string) {
         return this.rootUrl + '/api/patient/get-patient/' + patientGuid;
     }
+
+    getAllPatientsPathByFirstName(search: string, items: number, page: number): string {
+           return this.rootUrl + '/api/patient/search-patients/' + search + '/' + items + '/' + page ;
+     }
 }
