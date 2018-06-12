@@ -7,6 +7,7 @@ import { HttpReq } from './httpReq.class';
 
 @Injectable()
 export class UserService extends HttpReq {
+
   readonly namePattern = '^[a-zA-Z0-9._%+-]{2,}$';
   readonly emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
   readonly cnpPattern = '^[0-9]{13}$';
@@ -15,6 +16,11 @@ export class UserService extends HttpReq {
     super();
   }
   user: User;
+
+  getDepartmentNames(): Observable<any> {
+    return this.http.get<any>(this.rootUrl + '/api/department/get-all');
+  }
+
   registerUser(user: User) {
      const body = new HttpParams()
     .set('Firstname', user.Firstname)
@@ -24,6 +30,25 @@ export class UserService extends HttpReq {
     .set('Sex', user.Sex.toString())
     .set('Speciality', user.Speciality);
      return this.http.post(this.rootUrl + '/api/account/create-medic',
+     body);
+  }
+
+  registerUserReg(userReg: User) {
+    const body = new HttpParams()
+    .set('DepartmentName', userReg.DepartmentName)
+    .set('Password', userReg.Password)
+    .set('BedCount', userReg.BedCount.toString())
+    .set('Email', userReg.Email);
+     return this.http.post(this.rootUrl + '/api/account/create-registryOffice',
+     body);
+  }
+
+  registerUserLab(userLab: User) {
+    const body = new HttpParams()
+    .set('Name', userLab.Name)
+    .set('Password', userLab.Password)
+    .set('Email', userLab.Email);
+     return this.http.post(this.rootUrl + '/api/account/create-laboratoryAnalysis',
      body);
   }
 

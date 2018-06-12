@@ -31,7 +31,8 @@ export class SignInComponent implements OnInit, OnDestroy {
           localStorage.setItem('access_token', data.access_token);
           this.userService.getDataAboutUser(this.user.Email)
         .subscribe((d: any) => {
-          localStorage.setItem('medic_guid', d.Guid);
+          localStorage.setItem('medic_guid', d.Model.Guid);
+          localStorage.setItem('user_role', d.Role);
           console.log(d);
         }, e => {
           console.log(e);

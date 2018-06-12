@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201806111040518_UpdatedMappingMedicAnalysisModel.Designer.cs">
       <DependentUpon>201806111040518_UpdatedMappingMedicAnalysisModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806121634274_update.cs" />
+    <Compile Include="Migrations\201806121634274_update.Designer.cs">
+      <DependentUpon>201806121634274_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806111040518_UpdatedMappingMedicAnalysisModel.resx">
       <DependentUpon>201806111040518_UpdatedMappingMedicAnalysisModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121634274_update.resx">
+      <DependentUpon>201806121634274_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

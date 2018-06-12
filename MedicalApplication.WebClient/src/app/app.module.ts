@@ -35,6 +35,10 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
+// tslint:disable-next-line:max-line-length
+import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
+import { PermissionsService } from './services/permissions.service';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 
 
@@ -57,7 +61,9 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
     PatientComponent,
     CalendarComponent,
     AddPatientDialogComponent,
-    LoadingComponent,
+      LoadingComponent,
+      AddAnalysisDialogComponentComponent,
+    LaboratoryComponent,
     PatientDetailsComponent
   ],
   imports: [
@@ -102,9 +108,9 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
      MatPaginatorModule,
      MatProgressSpinnerModule
     ],
-  entryComponents: [AddPatientDialogComponent, PatientDetailsComponent],
+    entryComponents: [AddPatientDialogComponent, PatientDetailsComponent, AddAnalysisDialogComponentComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-     UserService, AuthGuard, SettingsService, RoutesService],
+     UserService, AuthGuard, RoutesService, PermissionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
