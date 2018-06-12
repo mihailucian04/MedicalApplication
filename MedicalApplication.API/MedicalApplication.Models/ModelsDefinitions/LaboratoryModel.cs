@@ -8,5 +8,6 @@ namespace MedicalApplication.Models.ModelsDefinitions
 {
     public class LaboratoryModel:BaseModel
     {
+        public string Name { get; set; }
     }
 }
