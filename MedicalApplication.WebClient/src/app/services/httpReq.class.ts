@@ -54,4 +54,7 @@ export class HttpReq {
     getAllPatientsPathByFirstName(search: string, items: number, page: number): string {
            return this.rootUrl + '/api/patient/search-patients/' + search + '/' + items + '/' + page ;
      }
+     getAllMappingAnalyzessLabRoute(items: number, page: number): string {
+        return this.rootUrl + '/api/analyze/get-mappingAnalyze/' + items + '/' + page ;
+      }
 }

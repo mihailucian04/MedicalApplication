@@ -1,5 +1,8 @@
+ok
+
 <h1 mat-dialog-title>Patient Details</h1>
 <div mat-dialog-content >
+    <div class="col-md-6 col-sm-6">
   <div class="row">
     <p>First Name</p>
     <mat-input-container>
@@ -20,14 +23,16 @@
     <mat-input-container>
       <input type="input" readonly name="CNP" [(ngModel)]="data.CNP"/>
     </mat-input-container>
-
-
+  </div>
+  </div>
+  <div class="col-md-6 col-sm-6">
+      <div class="row">
     <p>Assuranced</p>
     <mat-input-container>
       <input type="input" readonly name="CNP" [(ngModel)]="data.Assuranced"/>
     </mat-input-container>
 
-    <p>DOB</p>
+    <p>Date of birth</p>
     <mat-input-container>
       <input type="input" readonly name="CNP" [(ngModel)]="data.DOB"/>
     </mat-input-container>
@@ -42,14 +47,16 @@
     <mat-input-container>
       <input type="input" readonly name="CNP" [(ngModel)]="data.Telephone"/>
     </mat-input-container>
-
-
   </div>
 </div>
+
+  </div>
+
 <div class="row">
 
-  <div class="col-md-6 col-sm-6"></div>
-  <div class="col-md-6 col-sm-6">
+  <div class="col-md-4 col-sm-4"></div>
+  <div class="col-md-4 col-sm-4"></div>
+  <div class="col-md-4 col-sm-4">
 
     <mat-dialog-actions>
       <button mat-button mat-dialog-close>Cancel</button>

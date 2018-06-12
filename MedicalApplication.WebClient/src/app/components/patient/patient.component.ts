@@ -74,8 +74,8 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
      // console.log('dsa = ' + dsa);
     const dialogRef = this.dialog.open<PatientDetailsComponent, PatientModel>(PatientDetailsComponent, {
       data: patientDetails,
-      height: '400px',
-       width: '500px'
+      height: '700px',
+       width: '1000px'
     });
   }
   addPatient() {

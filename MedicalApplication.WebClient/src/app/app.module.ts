@@ -40,6 +40,7 @@ import { LaboratoryComponent } from './components/laboratory/laboratory.componen
 import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
 import { PermissionsService } from './services/permissions.service';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { UserRoleLaboratoryComponent } from './components/laboratory/user-role-laboratory/user-role-laboratory.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
       LoadingComponent,
       AddAnalysisDialogComponentComponent,
     LaboratoryComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    UserRoleLaboratoryComponent
   ],
   imports: [
     BrowserModule,

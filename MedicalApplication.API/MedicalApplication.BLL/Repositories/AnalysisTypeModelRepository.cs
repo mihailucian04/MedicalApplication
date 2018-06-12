@@ -30,5 +30,12 @@ namespace MedicalApplication.BLL.Repositories
 
             return count;
         }
+
+        public async Task<AnalysisTypeModel> GetAnalyzesByGuid(Guid analysisTypeGuid)
+        {
+            var analyzeModel = await _service.FindAsync(t => t.Guid == analysisTypeGuid);
+
+            return analyzeModel;
+        }
     }
 }

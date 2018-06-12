@@ -23,5 +23,18 @@ namespace MedicalApplication.BLL.Repositories
             await _service.AddAsync(mapping);
             
         }
+
+        public async Task<IEnumerable<MappingMedicAnalysisModel>> GetAllMappingAnalyzes(int itemsPerPage, int page)
+        {
+            var mappingList = await _service.FindAllAsync(itemsPerPage, page);
+            return mappingList;
+        }
+
+        public async Task<int> GetCount()
+        {
+            var count = await _service.CountAsync();
+
+            return count;
+        }
     }
 }

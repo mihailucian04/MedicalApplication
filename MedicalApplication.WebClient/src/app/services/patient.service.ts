@@ -8,6 +8,8 @@ import { AnalyzeResult } from '../components/laboratory/laboratory.component';
 @Injectable()
 export class PatientService extends HttpReq {
 
+
+
   addAnalyzesToProcess(medicGuid: string, patientGuid: string, analyzeGuids: string[]) {
        const body = new HttpParams()
       .set('MedicGuid', medicGuid)
@@ -22,7 +24,9 @@ export class PatientService extends HttpReq {
            searchAllPatientsByFirstName(search: string, items: number, page: number): Observable<APIPatientResponse> {
              return this.http.get<APIPatientResponse>(this.getAllPatientsPathByFirstName(search, items, page));
            }
-
+           getAnalyzesForLab(items, page): Observable<any> {
+            return this.http.get<APIPatientResponse>(this.getAllMappingAnalyzessLabRoute(items, page));
+          }
   deletePatients(patientGuid: string): any {
       return this.http.delete(this.getDeletePatientRoute(patientGuid));
   }

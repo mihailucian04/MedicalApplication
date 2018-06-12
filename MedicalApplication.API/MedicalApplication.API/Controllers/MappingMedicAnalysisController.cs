@@ -51,5 +51,33 @@ namespace MedicalApplication.API.Controllers
 
             return Ok();
         }
+        [HttpGet]
+        [Route("api/analyze/get-mappingAnalyze/{items}/{page}")]
+        public async Task<IHttpActionResult> GetAllMappingAnalyzeLab(int items,int page)
+        {
+            var mappingAnalyzeList = await _bll.MappingMedicAnalysisModelRepository.GetAllMappingAnalyzes(items, page);
+            var count = await _bll.MappingMedicAnalysisModelRepository.GetCount();
+
+            ///asa ceva nu se face!!
+            List<object> resultList= new List<object>();
+            foreach (var item in mappingAnalyzeList)
+            {
+                var medic = await _bll.MedicRepository.GetMedicByID(item.MedicGuid);
+                var patient = await _bll.PatientRepository.GetPatientByGuid(item.PatientGuid);
+                var analyze = await _bll.AnalysisTypeModelRepository.GetAnalyzesByGuid(item.AnalysisTypeGuid);
+                var result = new
+                {
+                    MappingGuid = item.Guid,
+                    MedicName = medic.FirstName +" " + medic.LastName,
+                    PatientName = patient.FirstName + " " + patient.LastName,
+                    CNP = patient.CNP,
+                    AnalysisName = analyze.Name,
+                    Result = ""
+                };
+
+                resultList.Add(result);
+            }
+            return Ok(new { Data = resultList, Count = count });
+        }
     }
 }
