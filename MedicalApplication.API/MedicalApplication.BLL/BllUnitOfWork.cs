@@ -17,6 +17,7 @@ namespace MedicalApplication.BLL
         private MedicRepository _medicRepository;
         private IdentityRoleRepository _identityRoleRepository;
         private PatientRepository _patientRepository;
+        private AnalysisTypeModelRepository _analysisTypeModelRepository;
 
         public virtual BaseDbContext DbContext
         {
@@ -57,6 +58,14 @@ namespace MedicalApplication.BLL
             get
             {
                 return _identityRoleRepository ?? (_identityRoleRepository = new IdentityRoleRepository(_dbContext));
+            }
+        }
+
+        public virtual AnalysisTypeModelRepository AnalysisTypeModelRepository
+        {
+            get
+            {
+                return _analysisTypeModelRepository ?? (_analysisTypeModelRepository = new AnalysisTypeModelRepository(_dbContext, this, _persistContext));
             }
         }
 

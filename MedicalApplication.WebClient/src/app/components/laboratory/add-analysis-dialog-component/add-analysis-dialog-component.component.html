@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Analyzes</h1>
+<div mat-dialog-content>
+  <form #addPatientForm="ngForm">
+    <div class="col-md-12 col-sm-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th>Name</th>
+              <th>Add</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let analyze of analyzesList">
+              <td>{{analyze.Name}}</td>
+              <td>
+                <button mat-button (click)="addAnalyze(analyze)" [disabled]="wasAddedBefore(analyze)">
+                  <i class="material-icons">add</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator [length]="page.Length" [pageSize]="page.PageSize" [pageSizeOptions]="page.PageSizeOption" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+      </div>
+
+    </div>
+  </form>
+</div>
+<div class="row">
+
+  <div class="col-md-6 col-sm-6"></div>
+  <div class="col-md-6 col-sm-6">
+
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="!addPatientForm.valid" (click)="onFinish()" cdkFocusInitial>Confirm</button>
+    </mat-dialog-actions>
+  </div>
+</div>

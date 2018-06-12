@@ -28,10 +28,7 @@
                 <tbody>
                   <tr *ngFor="let patient of patientList">
                     <td>
-                      <mat-checkbox
-                       [(ngModel)]="patient.LocDeleted"
-                       [disabled]="!patient.LocDeleted && isFirstTrue()"
-                       [checked]="patient.LocDeleted"></mat-checkbox>
+                      <mat-checkbox [(ngModel)]="patient.LocDeleted" [disabled]="!patient.LocDeleted && isFirstTrue()" [checked]="patient.LocDeleted"></mat-checkbox>
                     </td>
                     <td>{{patient.FirstName}}</td>
                     <td>{{patient.LastName}}</td>
@@ -42,6 +39,46 @@
               <mat-paginator [length]="page.Length" [pageSize]="page.PageSize" [pageSizeOptions]="page.PageSizeOption" (page)="pageEvent = handlePage($event)">
               </mat-paginator>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-sm-8"></div>
+    <div class="col-md-2 col-sm-2">
+      <button mat-button (click)="addAnalysis()">
+        + Add analyzes
+      </button>
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <button mat-button [disabled]="!(isPatientSelected() && isAnalysisSelected())" (click)="sendToLab()">
+        Send to lab
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-content">
+          <h4 class="card-title">Analyzes testing</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th>Name</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let analysis of analysisList">
+                  <td>{{analysis.Name}}</td>
+                  <button mat-button (click)="removeAnalyze(analysis)">
+                      <i class="material-icons">clear</i>
+                    </button>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BllUnitOfWork.cs" />
+    <Compile Include="Repositories\AnalysisTypeModelRepository.cs" />
     <Compile Include="Repositories\IdentityRoleRepository.cs" />
     <Compile Include="Repositories\MedicRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />

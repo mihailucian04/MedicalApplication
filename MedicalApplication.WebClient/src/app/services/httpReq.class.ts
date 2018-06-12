@@ -42,4 +42,12 @@ export class HttpReq {
     getDeletePatientRoute(patientGuid: string) {
         return this.rootUrl + '/api/patient/delete-patient/' + patientGuid;
     }
+
+    getAnalyzesByItemsPage(items: number, page: number): string {
+        return this.rootUrl + '/api/analyze/' + items + '/' + page;
+    }
+
+  getAddAnalyzezMappingRoute(): any {
+    return this.rootUrl + '/api/analyze/add-analyzeOfPatient';
+  }
 }

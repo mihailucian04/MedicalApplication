@@ -86,6 +86,15 @@ namespace MedicalApplication.BLL
                 .ToListAsync();
         }
 
+        public async virtual Task<ICollection<T>> FindAllAsync(int pageItems, int pageNo)
+        {
+            return await _context.Set<T>()
+                .OrderBy(o => o.Guid)
+                .Skip((pageNo - 1) * pageItems)
+                .Take(pageItems)
+                .ToListAsync();
+        }
+
         public T Add(T t)
         {
             _context.Set<T>().Add(t);

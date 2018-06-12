@@ -36,6 +36,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { LaboratoryComponent } from './components/laboratory/laboratory.component';
+import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { LaboratoryComponent } from './components/laboratory/laboratory.componen
     CalendarComponent,
     AddPatientDialogComponent,
     LoadingComponent,
-    LaboratoryComponent
+    LaboratoryComponent,
+    AddAnalysisDialogComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +104,7 @@ import { LaboratoryComponent } from './components/laboratory/laboratory.componen
      MatPaginatorModule,
      MatProgressSpinnerModule
     ],
-  entryComponents: [AddPatientDialogComponent],
+  entryComponents: [AddPatientDialogComponent, AddAnalysisDialogComponentComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
      UserService, AuthGuard, RoutesService],
   bootstrap: [AppComponent]
