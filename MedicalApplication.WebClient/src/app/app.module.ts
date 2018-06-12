@@ -39,6 +39,7 @@ import { LaboratoryComponent } from './components/laboratory/laboratory.componen
 // tslint:disable-next-line:max-line-length
 import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
 import { PermissionsService } from './services/permissions.service';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 
 
 @NgModule({
@@ -60,9 +61,9 @@ import { PermissionsService } from './services/permissions.service';
     PatientComponent,
     CalendarComponent,
     AddPatientDialogComponent,
-    LoadingComponent,
-    LaboratoryComponent,
-    AddAnalysisDialogComponentComponent
+      LoadingComponent,
+      AddAnalysisDialogComponentComponent,
+    PatientDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +107,7 @@ import { PermissionsService } from './services/permissions.service';
      MatPaginatorModule,
      MatProgressSpinnerModule
     ],
-  entryComponents: [AddPatientDialogComponent, AddAnalysisDialogComponentComponent],
+    entryComponents: [AddPatientDialogComponent, PatientDetailsComponent, AddAnalysisDialogComponentComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
      UserService, AuthGuard, RoutesService, PermissionsService],
   bootstrap: [AppComponent]

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PermissionsService } from '../../services/permissions.service';
 
 @Component({
@@ -65,6 +66,18 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
      });
   }
 
+  openDetails(param1,p) {
+    console.log('sasd' + param1);
+    console.log(  p);
+    const patientDetails=p;
+     //const  dsa = this.patientService.getPatientById(p.Guid);
+     //console.log('dsa = ' + dsa);
+    const dialogRef = this.dialog.open<PatientDetailsComponent, PatientModel>(PatientDetailsComponent, {
+      data: patientDetails,
+      height: '400px',
+       width: '500px'
+    });
+  }
   addPatient() {
     const dialogRef = this.dialog.open<AddPatientDialogComponent, PatientModel>(AddPatientDialogComponent, {
       data: {
@@ -111,6 +124,7 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   check(checkbox: any, elem: PatientModel) {
+    console.log(checkbox,elem)
     const index = this.patients.findIndex(x => x.Guid === elem.Guid);
     this.patients[index].LocDeleted = checkbox.checked;
   }
