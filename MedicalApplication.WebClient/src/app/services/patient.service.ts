@@ -3,24 +3,10 @@ import { HttpReq } from './httpReq.class';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { PatientModel, APIPatientResponse } from '../components/patient/patient.component';
-import { AnalysisModel, AnalyzeResult } from '../components/laboratory/laboratory.component';
 
 @Injectable()
 export class PatientService extends HttpReq {
 
-  addAnalyzesToProcess(medicGuid: string, patientGuid: string, analyzeGuids: string[]) {
-    const body = new HttpParams()
-    .set('MedicGuid', medicGuid)
-    .set('PatientGuid', patientGuid)
-    .set('Result', analyzeGuids.toString());
-    return this.http.post(this.getAddAnalyzezMappingRoute(), body);
-  }
-  GetAnalyzes(items: number, page: number): Observable<AnalyzeResult> {
-    return this.http.get<AnalyzeResult>(this.getAnalyzesByItemsPage(items, page));
-  }
-  searchAllPatientsByFirstName(search: string, items: number, page: number): Observable<APIPatientResponse> {
-    return this.http.get<APIPatientResponse>(this.getAllPatientsPathByFirstName(search, items, page));
-  }
   deletePatients(patientGuid: string): any {
       return this.http.delete(this.getDeletePatientRoute(patientGuid));
   }
@@ -33,6 +19,10 @@ export class PatientService extends HttpReq {
 
   getAllPatientsByMedic(medicGuid: string): Observable<PatientModel[]> {
     return this.http.get<PatientModel[]>(this.getAllPatientsPathByMedicRoute(medicGuid));
+  }
+ 
+  getPatientById(patientGuid: string): any {
+      return this.http.get(this.getPatientById(patientGuid));
   }
 
   addPacient(patient: PatientModel) {

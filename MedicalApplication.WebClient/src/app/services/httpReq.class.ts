@@ -30,24 +30,15 @@ export class HttpReq {
         return this.rootUrl + '/api/patient/get-patients-by-medic/' + items + '/' + page + '/' + medicGuid ;
     }
 
-    getAllPatientsPathByFirstName(search: string, items: number, page: number): string {
-        return this.rootUrl + '/api/patient/search-patients/' + search + '/' + items + '/' + page ;
-      }
-
     getAddPatientRoute() {
         return this.rootUrl + '/api/patient/add-patient';
     }
-
 
     getDeletePatientRoute(patientGuid: string) {
         return this.rootUrl + '/api/patient/delete-patient/' + patientGuid;
     }
 
-    getAnalyzesByItemsPage(items: number, page: number): string {
-        return this.rootUrl + '/api/analyze/' + items + '/' + page;
+    getPatientById(patientGuid: string) {
+        return this.rootUrl + '/api/patient/get-patient/' + patientGuid;
     }
-
-  getAddAnalyzezMappingRoute(): any {
-    return this.rootUrl + '/api/analyze/add-analyzeOfPatient';
-  }
 }

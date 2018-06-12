@@ -19,6 +19,9 @@ namespace MedicalApplication.BLL
         private PatientRepository _patientRepository;
         private AnalysisTypeModelRepository _analysisTypeModelRepository;
         private MappingMedicAnalysisModelRepository _mappingMedicAnalysisModelRepository;
+        private RegistryOfficeRepository _registrationOfficeRepository;
+        private LaboratoryAnalysisRepository _laboratoryAnalysisRepository;
+        private DepartmentRepository _departmentRepository;
 
         public virtual BaseDbContext DbContext
         {
@@ -75,6 +78,30 @@ namespace MedicalApplication.BLL
             get
             {
                 return _mappingMedicAnalysisModelRepository ?? (_mappingMedicAnalysisModelRepository = new MappingMedicAnalysisModelRepository(_dbContext, this, _persistContext));
+            }
+        }
+
+        public virtual RegistryOfficeRepository RegistryOfficeRepository
+        {
+            get
+            {
+                return _registrationOfficeRepository ?? (_registrationOfficeRepository = new RegistryOfficeRepository(_dbContext, this, _persistContext));
+            }
+        }
+
+        public virtual LaboratoryAnalysisRepository LaboratoryAnalysisRepository
+        {
+            get
+            {
+                return _laboratoryAnalysisRepository ?? (_laboratoryAnalysisRepository = new LaboratoryAnalysisRepository(_dbContext, this, _persistContext));
+            }
+        }
+
+        public virtual DepartmentRepository DepartmentRepository
+        {
+            get
+            {
+                return _departmentRepository ?? (_departmentRepository = new DepartmentRepository(_dbContext, this, _persistContext));
             }
         }
 
