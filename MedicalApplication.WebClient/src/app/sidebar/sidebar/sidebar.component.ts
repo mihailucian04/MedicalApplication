@@ -20,6 +20,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public activeFontColor: string;
   public normalFontColor: string;
   public dividerBgColor: string;
+
   constructor(private routeService: RoutesService) {
     this.menuItems = routeService.getRoutes();
     this.activeFontColor = 'rgba(0,0,0,.6)';
@@ -31,5 +32,16 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
   }
+
+  // hideMenuItem(title: string) {
+  //   if (this.isMedic === true) {
+  //     return false;
+  //   } else if ( this.isLab === true && (title === 'Home' || title === 'Laboratory Analysis') ) {
+  //     return false;
+  //   } else if (this.isReg === true && (title === 'Home')) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
 }

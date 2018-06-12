@@ -19,11 +19,11 @@ export const appRoutes: Routes = [
         {path: 'home', component: HomeComponent, pathMatch: 'full'},
          {path: 'patient', component: PatientComponent, pathMatch: 'full'},
          {path: 'calendar', component: CalendarComponent, pathMatch: 'full'},
-         {path: 'laboratory', component: LaboratoryComponent, pathMatch: 'full'},
+         {path: 'laboratory', component: LaboratoryComponent, pathMatch: 'full'}
         // {path: 'table', component: TableComponent},
         // {path: 'notification', component: NotificationComponent},
         // {path: 'alert', component: SweetAlertComponent},
-         {path: 'settings', component: SettingsComponent, pathMatch: 'full'}
+        //  {path: 'settings', component: SettingsComponent, pathMatch: 'full'}
         // {path: 'components/price-table', component: PriceTableComponent},
         // {path: 'components/panels', component: PanelsComponent},
         // {path: 'components/wizard', component: WizardComponent}

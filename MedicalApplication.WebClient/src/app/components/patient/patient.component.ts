@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { PermissionsService } from '../../services/permissions.service';
 
 @Component({
   selector: 'app-patient',
@@ -31,7 +32,7 @@ export class PatientComponent implements OnInit, OnDestroy, DoCheck {
     this.dataSource.filter = filterValue;
   }
   constructor(private patientService: PatientService, public dialog: MatDialog,
-    private toastr: ToastrService, private router: Router) {
+    private toastr: ToastrService, private router: Router, public permission: PermissionsService) {
 
   }
 

@@ -235,22 +235,25 @@ namespace MedicalApplication.API.Controllers
 
             if (role.Name.Equals("Medic"))
             {
-                viewModel.Model = await _bll.MedicRepository.GetMedicByID(user.User_ID);
-                viewModel.Role = "Medic";
+                var model = await _bll.MedicRepository.GetMedicByID(user.User_ID);
+                var role1 = "Medic";
+                return Ok(new {Model=model, Role=role1 });
             }
 
             else if (role.Name.Equals("RegistryOffice"))
             {
-                viewModel.Model = await _bll.RegistryOfficeRepository.GetRegistryOfficeByGuid(user.User_ID);
-                viewModel.Role = "RegistryOffice";
+                var model = await _bll.RegistryOfficeRepository.GetRegistryOfficeByGuid(user.User_ID);
+                var role1 = "RegistryOffice";
+                return Ok(new { Model = model, Role = role1 });
             }
             else if (role.Name.Equals("LaboratoryAnalysis"))
             {
-                viewModel.Model = await _bll.LaboratoryAnalysisRepository.GetLaboratoryByGuid(user.User_ID);
-                viewModel.Role = "LaboratoryAnalysis";
+                var model = await _bll.LaboratoryAnalysisRepository.GetLaboratoryByGuid(user.User_ID);
+                var role1 = "LaboratoryAnalysis";
+                return Ok(new { Model = model, Role = role1 });
             }
 
-            return Ok(viewModel);
+            return Ok();
         }
     }
 }

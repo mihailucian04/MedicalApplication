@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="permission.isMed" class="container">
   <div *ngIf='!isLoaded'>
     <app-loading></app-loading>
   </div>
@@ -76,4 +76,7 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!permission.isMed" class="container">
+  <h3>You are not authorized to access this page!</h3>
 </div>

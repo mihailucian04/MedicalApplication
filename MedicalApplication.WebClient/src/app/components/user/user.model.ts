@@ -5,4 +5,7 @@ export class User {
     Lastname: string;
     Speciality: string;
     Sex: number;
+    Name: string;
+    DepartmentName: string;
+    BedCount: number;
 }

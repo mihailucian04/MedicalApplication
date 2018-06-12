@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ISubscription } from 'rxjs/Subscription';
 import { MatDialog } from '@angular/material';
 import { AddAnalysisDialogComponentComponent } from './add-analysis-dialog-component/add-analysis-dialog-component.component';
+import { PermissionsService } from '../../services/permissions.service';
 
 @Component({
   selector: 'app-laboratory',
@@ -22,7 +23,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   page = {CurrentPage: 0, TableViewPage: 1, PageSize: 5, Length: 5, PageSizeOption: [5] };
 
   constructor(private patientService: PatientService, public dialog: MatDialog,
-    private toastr: ToastrService, private router: Router) {
+    private toastr: ToastrService, private router: Router, public permission: PermissionsService) {
       this.analysisList = [];
      }
 
