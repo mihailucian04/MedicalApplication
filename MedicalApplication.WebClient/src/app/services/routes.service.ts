@@ -8,7 +8,6 @@ export class RoutesService {
   { path: 'home', title: 'Home', icon: 'dashboard', children: null },
    { path: 'patient', title: 'Patients', icon: 'person', children: null },
    { path: 'calendar', title: 'Calendar', icon: 'calendar_today', children: null },
-   { path: 'laboratory', title: 'Laboratory Analysis', icon: 'work', children: null },
    // { path: 'table', title: 'Table List', icon: 'content_paste', children: null },
    // { path: '#component', id: 'component', title: 'Component', icon: 'apps', children: [
      //     {path: 'components/price-table', title: 'Price Table', icon: 'PT'},

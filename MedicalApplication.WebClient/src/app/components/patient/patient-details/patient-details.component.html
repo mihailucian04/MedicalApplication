@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Patient Details</h1>
+<div mat-dialog-content >
+  <div class="row">
+    <p>First Name</p>
+    <mat-input-container>
+      <input type="input" readonly name="Firstname" [(ngModel)]="data.FirstName"/>
+    </mat-input-container>
+
+    <p>Last Name</p>
+    <mat-input-container>
+      <input type="input" readonly name="LastName" [(ngModel)]="data.LastName"/>
+    </mat-input-container>
+
+    <p>Address</p>
+    <mat-input-container>
+      <input type="input" readonly name="Address" [(ngModel)]="data.Address"/>
+    </mat-input-container>
+
+    <p>CNP</p>
+    <mat-input-container>
+      <input type="input" readonly name="CNP" [(ngModel)]="data.CNP"/>
+    </mat-input-container>
+
+
+    <p>Assuranced</p>
+    <mat-input-container>
+      <input type="input" readonly name="CNP" [(ngModel)]="data.Assuranced"/>
+    </mat-input-container>
+
+    <p>DOB</p>
+    <mat-input-container>
+      <input type="input" readonly name="CNP" [(ngModel)]="data.DOB"/>
+    </mat-input-container>
+
+
+    <p>Sex</p>
+    <mat-input-container>
+      <input type="input" readonly name="CNP" [(ngModel)]="data.Sex"/>
+    </mat-input-container>
+
+    <p>Telephone</p>
+    <mat-input-container>
+      <input type="input" readonly name="CNP" [(ngModel)]="data.Telephone"/>
+    </mat-input-container>
+
+
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-md-6 col-sm-6"></div>
+  <div class="col-md-6 col-sm-6">
+
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+  </div>
+</div>

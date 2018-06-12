@@ -35,8 +35,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
 import { LoadingComponent } from './shared/loading/loading.component';
-import { LaboratoryComponent } from './components/laboratory/laboratory.component';
-import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 
 
 @NgModule({
@@ -59,8 +58,7 @@ import { AddAnalysisDialogComponentComponent } from './components/laboratory/add
     CalendarComponent,
     AddPatientDialogComponent,
     LoadingComponent,
-    LaboratoryComponent,
-    AddAnalysisDialogComponentComponent
+    PatientDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -104,9 +102,9 @@ import { AddAnalysisDialogComponentComponent } from './components/laboratory/add
      MatPaginatorModule,
      MatProgressSpinnerModule
     ],
-  entryComponents: [AddPatientDialogComponent, AddAnalysisDialogComponentComponent],
+  entryComponents: [AddPatientDialogComponent, PatientDetailsComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-     UserService, AuthGuard, RoutesService],
+     UserService, AuthGuard, SettingsService, RoutesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

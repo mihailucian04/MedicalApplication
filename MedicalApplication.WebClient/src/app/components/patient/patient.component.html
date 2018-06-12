@@ -10,7 +10,7 @@
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
       </div>
-      <mat-table #table [dataSource]="dataSource">
+      <mat-table #table [dataSource]="dataSource" >
 
         <ng-container matColumnDef="Select">
           <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
@@ -56,7 +56,8 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"
+        (dblclick)="openDetails($event,row)"></mat-row>
       </mat-table>
       <mat-paginator [length]="page.Length" [pageSize]="page.PageSize" [pageSizeOptions]="page.PageSizeOption" (page)="pageEvent = handlePage($event)">
       </mat-paginator>
@@ -73,7 +74,11 @@
         <button mat-button [disabled]="!isPatientSelectedForDelete()" (click)="deletePatient()">
           <i class="material-icons">remove</i> Delete patient
         </button>
-      </div>
     </div>
+    <div class="col-md-2 col-sm-2">
+      <button mat-button (click)="openDetails()">
+        <i class="material-icons">remove</i>open
+      </button>
+  </div>
   </div>
 </div>
