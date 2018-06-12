@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AnalyzeController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MappingMedicAnalysisController.cs" />
     <Compile Include="Controllers\MedicController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Global.asax.cs">

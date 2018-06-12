@@ -9,7 +9,10 @@ import { AnalysisModel, AnalyzeResult } from '../components/laboratory/laborator
 export class PatientService extends HttpReq {
 
   addAnalyzesToProcess(medicGuid: string, patientGuid: string, analyzeGuids: string[]) {
-    const body = new HttpParams();
+    const body = new HttpParams()
+    .set('MedicGuid', medicGuid)
+    .set('PatientGuid', patientGuid)
+    .set('Result', analyzeGuids.toString());
     return this.http.post(this.getAddAnalyzezMappingRoute(), body);
   }
   GetAnalyzes(items: number, page: number): Observable<AnalyzeResult> {
