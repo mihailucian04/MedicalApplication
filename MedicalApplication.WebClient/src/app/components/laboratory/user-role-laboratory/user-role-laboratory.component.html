@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-content">
+      <h4 class="card-title"></h4>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th>Medic Name</th>
+              <th>Patient Name</th>
+              <th>CNP</th>
+              <th>Analysis Name</th>
+              <th>Insert result</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let analyze of mappingMedicAnalyzes">
+              <td>{{analyze.MedicName}}</td>
+              <td>{{analyze.PatientName}}</td>
+              <td class="text-primary">{{analyze.CNP}}</td>
+              <td>{{analyze.AnalysisName}}</td>
+              <td>
+                <mat-input-container color="accent">
+                  <input type="number" matInput placeholder="Result" name="Result" [(ngModel)]="analyze.Result"  />
+                </mat-input-container>
+              </td>
+              <td>
+                <button mat-button (click)="updateAnalyze(analyze)" [disabled]="analyze.Result === ''">
+                  <i class="material-icons">add</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator [length]="page.Length" [pageSize]="page.PageSize" [pageSizeOptions]="page.PageSizeOption" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

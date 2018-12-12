@@ -1,0 +1,95 @@
+<div class="container">
+  <app-navbar title="Laboratory"></app-navbar>
+  <div *ngIf="permission.isMed === true">
+    <div class="row">
+      <label>Search the patient by first name: </label>
+      <mat-input-container>
+        <input type="text" matInput placeholder="Search" name="Search" (keydown)="keyDownFunction($event)" [(ngModel)]="search" />
+      </mat-input-container>
+    </div>
+    <div class="row">
+      <div *ngIf='!isLoaded'>
+        <app-loading></app-loading>
+      </div>
+      <div *ngIf='isLoaded'>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-content">
+              <h4 class="card-title">Patients</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <tr>
+                      <th>Select patient</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>CNP</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let patient of patientList">
+                      <td>
+                        <mat-checkbox [(ngModel)]="patient.LocDeleted" [disabled]="!patient.LocDeleted && isFirstTrue()" [checked]="patient.LocDeleted"></mat-checkbox>
+                      </td>
+                      <td>{{patient.FirstName}}</td>
+                      <td>{{patient.LastName}}</td>
+                      <td class="text-primary">{{patient.CNP}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <mat-paginator [length]="page.Length" [pageSize]="page.PageSize" [pageSizeOptions]="page.PageSizeOption" (page)="pageEvent = handlePage($event)">
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-8"></div>
+      <div class="col-md-2 col-sm-2">
+        <button mat-button (click)="addAnalysis()">
+          + Add analyzes
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-2">
+        <button mat-button [disabled]="!(isPatientSelected() && isAnalysisSelected())" (click)="sendToLab()">
+          Send to lab
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-content">
+            <h4 class="card-title">Analyzes testing</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Name</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let analysis of analysisList">
+                    <td>{{analysis.Name}}</td>
+                    <button mat-button (click)="removeAnalyze(analysis)">
+                      <i class="material-icons">clear</i>
+                    </button>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="permission.isLab">
+      <app-user-role-laboratory></app-user-role-laboratory>
+  </div>
+  <div *ngIf="permission.isReg"class="container">
+      <h3>You are not authorized to access this page!</h3>
+  </div>
+</div>

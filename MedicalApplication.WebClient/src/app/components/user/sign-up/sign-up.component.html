@@ -3,66 +3,177 @@
     <div class="row">
       <app-header></app-header>
     </div>
-    <form class="row" #userRegistrationForm="ngForm">
+    <div class="row">
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
         <div class="card">
-          <div class="card-header">
-            <mat-icon>account_circle</mat-icon>
-            <h4>Register to eHospital</h4>
-          </div>          
-          <div class="card-form">
-            <div class="form-row">
-              <i class="material-icons">face</i>
-              <mat-input-container >
-                <input type="text"   matInput placeholder="First Name" name="Firstname" [(ngModel)]="user.Firstname"  required [pattern]="userService.namePattern"/>
-              </mat-input-container>
+          <label>Do you want to register like a :</label>
+          <div>
+            <div class="col-md-4 col-sm-6">
+              <div *ngFor="let type of typeOfSignUp">
+                <mat-checkbox [(ngModel)]="type.value" (change)="checkAndUncheck(type)" [checked]="type.value">{{type.label}}</mat-checkbox>
+              </div>
             </div>
-            <div class="form-row">
-              <i class="material-icons">face</i>
-              <mat-input-container color="accent">
-                <input type="text" matInput placeholder="Last Name" name="Lastname" [(ngModel)]="user.Lastname" required [pattern]="userService.namePattern"/>
-              </mat-input-container>
-            </div>
-            <div class="form-row">
-              <i class="material-icons">email</i>
-              <mat-input-container color="accent">
-                <input type="text" matInput placeholder="Email address" name="Email" [(ngModel)]="user.Email" required [pattern]="userService.emailPattern"/>
-              </mat-input-container>
-            </div>
-            <div class="form-row">
-              <i class="material-icons">lock_outline</i>
-              <mat-form-field color="accent">
-                <mat-select placeholder="Sex" [(value)]="user.Sex" required>
-                  <mat-option *ngFor="let sex of sexValues" [value]="sex.value">
-                    {{sex.gender}}
-                  </mat-option>
-                </mat-select>
-               </mat-form-field>
-            </div>
-            <div class="form-row">
-              <i class="material-icons">lock_outline</i>
-              <mat-input-container color="accent">
-                <input type="text" name="Speciality" [(ngModel)]="user.Speciality" matInput placeholder="Speciality"  required/>
-              </mat-input-container>
-            </div>
-            <div class="form-row">
-              <i class="material-icons">lock_outline</i>
-              <mat-input-container color="accent">
-                <input type="password" name="Password" [(ngModel)]="user.Password" matInput placeholder="Password"  required/>
-              </mat-input-container>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button mat-button type="submit" [disabled]="!userRegistrationForm.valid" (click)="registerBtn()">Register</button>
-          </div>
-          <div class="text-center">
-            <span> Already have an account?
-              <a class="test-info fa-external-link" href="/user/login">Login</a>
-            </span>
           </div>
         </div>
       </div>
-    </form>
+    </div>
+    <div [hidden]='!isMedic'>
+      <form class="row" #userRegistrationForm="ngForm">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <div class="card">
+            <div class="card-header">
+              <mat-icon>account_circle</mat-icon>
+              <h4>Register to eHospital</h4>
+            </div>
+            <div class="card-form">
+              <div class="form-row">
+                <i class="material-icons">face</i>
+                <mat-input-container>
+                  <input type="text" matInput placeholder="First Name" name="Firstname" [(ngModel)]="user.Firstname" required [pattern]="userService.namePattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">face</i>
+                <mat-input-container color="accent">
+                  <input type="text" matInput placeholder="Last Name" name="Lastname" [(ngModel)]="user.Lastname" required [pattern]="userService.namePattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">email</i>
+                <mat-input-container color="accent">
+                  <input type="text" matInput placeholder="Email address" name="Email" [(ngModel)]="user.Email" required [pattern]="userService.emailPattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">lock_outline</i>
+                <mat-form-field color="accent">
+                  <mat-select placeholder="Sex" [(value)]="user.Sex" required>
+                    <mat-option *ngFor="let sex of sexValues" [value]="sex.value">
+                      {{sex.gender}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">lock_outline</i>
+                <mat-form-field color="accent">
+                  <input type="text" name="Speciality" [(ngModel)]="user.Speciality" matInput placeholder="Speciality" required/>
+                </mat-form-field>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">lock_outline</i>
+                <mat-input-container color="accent">
+                  <input type="password" name="Password" [(ngModel)]="user.Password" matInput placeholder="Password" required/>
+                </mat-input-container>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button mat-button type="submit" [disabled]="!userRegistrationForm.valid" (click)="registerBtn()">Register</button>
+            </div>
+            <div class="text-center">
+              <span> Already have an account?
+                <a class="test-info fa-external-link" href="/user/login">Login</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div [hidden]='!isLab'>
+      <form class="row" #userRegistrationForm="ngForm">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <div class="card">
+            <div class="card-header">
+              <mat-icon>account_circle</mat-icon>
+              <h4>Register to eHospital</h4>
+            </div>
+            <div class="card-form">
+              <div class="form-row">
+                <i class="material-icons">face</i>
+                <mat-input-container>
+                  <input type="text" matInput placeholder="Name" name="Name" [(ngModel)]="user.Name" required [pattern]="userService.namePattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">email</i>
+                <mat-input-container color="accent">
+                  <input type="text" matInput placeholder="Email address" name="Email" [(ngModel)]="user.Email" required [pattern]="userService.emailPattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">lock_outline</i>
+                <mat-input-container color="accent">
+                  <input type="password" name="Password" [(ngModel)]="user.Password" matInput placeholder="Password" required/>
+                </mat-input-container>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button mat-button type="submit" [disabled]="!userRegistrationForm.valid" (click)="registerBtnLab()">Register</button>
+            </div>
+            <div class="text-center">
+              <span> Already have an account?
+                <a class="test-info fa-external-link" href="/user/login">Login</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div [hidden]='!isReg'>
+      <form class="row" #userRegistrationForm="ngForm">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <div class="card">
+            <div class="card-header">
+              <mat-icon>account_circle</mat-icon>
+              <h4>Register to eHospital</h4>
+            </div>
+            <div class="card-form">
+              <div class="form-row">
+                <i class="material-icons">email</i>
+                <mat-input-container color="accent">
+                  <input type="text" matInput placeholder="Email address" name="Email" [(ngModel)]="user.Email" required [pattern]="userService.emailPattern"
+                  />
+                </mat-input-container>
+              </div>
+              <div class="form-row">
+                <i class="material-icons">face</i>
+                <mat-form-field color="accent">
+                  <input type="number" name="BedCount" [(ngModel)]="user.BedCount" matInput placeholder="Bed Count" required/>
+                </mat-form-field>
+              </div>
+              <div class="form-row">
+                  <i class="material-icons">face</i>
+                  <mat-form-field color="accent">
+                    <mat-select placeholder="Department Names" [(value)]="user.DepartmentName" required>
+                      <mat-option *ngFor="let dep of departmentNames" [value]="dep">
+                        {{dep}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              <div class="form-row">
+                <i class="material-icons">lock_outline</i>
+                <mat-input-container color="accent">
+                  <input type="password" name="Password" [(ngModel)]="user.Password" matInput placeholder="Password" required/>
+                </mat-input-container>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button mat-button type="submit" [disabled]="!userRegistrationForm.valid" (click)="registerBtnReg()">Register</button>
+            </div>
+            <div class="text-center">
+              <span> Already have an account?
+                <a class="test-info fa-external-link" href="/user/login">Login</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-

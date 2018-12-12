@@ -7,13 +7,13 @@ namespace ClassLibrary2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class latest : IMigrationMetadata
+    public sealed partial class OtherDetailsAddedOnPatientModel1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(latest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(OtherDetailsAddedOnPatientModel1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805201238535_latest"; }
+            get { return "201806110946378_OtherDetailsAddedOnPatientModel1"; }
         }
         
         string IMigrationMetadata.Source

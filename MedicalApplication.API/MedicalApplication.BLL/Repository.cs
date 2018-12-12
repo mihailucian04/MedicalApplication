@@ -72,6 +72,29 @@ namespace MedicalApplication.BLL
             return await _context.Set<T>().Where(match).ToListAsync();
         }
 
+        public async virtual Task<int> CountAllAsync(Expression<Func<T, bool>> match)
+        {
+            return await _context.Set<T>().Where(match).CountAsync();
+        }
+
+        public async virtual Task<ICollection<T>> FindAllAsync(Expression<Func<T, bool>> match, int pageItems, int pageNo)
+        {
+            return await _context.Set<T>().Where(match)
+                .OrderBy(o => o.Guid)
+                .Skip((pageNo-1)* pageItems)
+                .Take(pageItems)
+                .ToListAsync();
+        }
+
+        public async virtual Task<ICollection<T>> FindAllAsync(int pageItems, int pageNo)
+        {
+            return await _context.Set<T>()
+                .OrderBy(o => o.Guid)
+                .Skip((pageNo - 1) * pageItems)
+                .Take(pageItems)
+                .ToListAsync();
+        }
+
         public T Add(T t)
         {
             _context.Set<T>().Add(t);

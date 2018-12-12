@@ -36,6 +36,18 @@ namespace ClassLibrary2.Migrations
                 var role = new IdentityRole { Name = "Medic" };
                 manager.Create(role);
             }
+
+            if (!context.Roles.Any(r => r.Name == "RegistryOffice"))
+            {
+                var role = new IdentityRole { Name = "RegistryOffice" };
+                manager.Create(role);
+            }
+
+            if (!context.Roles.Any(r => r.Name == "LaboratoryAnalysis"))
+            {
+                var role = new IdentityRole { Name = "LaboratoryAnalysis" };
+                manager.Create(role);
+            }
         }
     }
 }

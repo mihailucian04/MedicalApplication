@@ -3,16 +3,16 @@ namespace ClassLibrary2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class latest : DbMigration
+    public partial class update : DbMigration
     {
         public override void Up()
         {
-            //DropColumn("dbo.PatientModels", "IsDeleted");
+            AddColumn("dbo.LaboratoryModels", "Name", c => c.String());
         }
         
         public override void Down()
         {
-            //AddColumn("dbo.PatientModels", "IsDeleted", c => c.Boolean(nullable: false));
+            DropColumn("dbo.LaboratoryModels", "Name");
         }
     }
 }

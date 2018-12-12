@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpHandler, HttpHeaderResponse,
      HttpSentEvent, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import 'rxjs/add/operator/do';
 
 
 @Injectable()
@@ -20,8 +21,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 succ => {
                 },
                 err => {
-                    // tslint:disable-next-line:no-debugger
-                    debugger;
                     if (err.status === 401) {
                         this.router.navigateByUrl('/user/login');
                     }

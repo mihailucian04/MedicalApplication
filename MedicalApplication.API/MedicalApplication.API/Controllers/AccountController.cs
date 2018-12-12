@@ -71,7 +71,7 @@ namespace MedicalApplication.API.Controllers
             var medicExists = await _bll.MedicRepository.CheckIfMedicExists(medicRegistrationViewModel.Firstname, medicRegistrationViewModel.Lastname);
 
             if (medicExists)
-                return BadRequest();
+                return BadRequest("This medic already exists in database!");
 
             var medicModel = medicRegistrationViewModel.ToMedicModel();
             medicModel.Guid = Guid.NewGuid();
@@ -96,11 +96,162 @@ namespace MedicalApplication.API.Controllers
             var roles = _bll.IdentityRoleRepository.GetAll();
 
             var currentUser = await UserManager.FindByEmailAsync(applicationModel.Email);
-            var currentRole = roles.ToList().FirstOrDefault(t => t.Name == "Medic");
-            var roleResult = UserManager.AddToRole(currentUser.Id, "Medic");
+
+            if (medicRegistrationViewModel.Speciality == "Medic")
+            {
+                var roleResult = UserManager.AddToRole(currentUser.Id, "Medic");
+            }
+            else
+            {
+                var roleResult = UserManager.AddToRole(currentUser.Id, "RegistryOffice");
+            }
 
             if (!addUserResult.Succeeded)
                 return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("api/account/create-registryOffice")]
+        public async Task<IHttpActionResult> CreateRegistryOffice([FromBody] RegistryOfficeViewModel registryOfficeViewModel)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var registryOfficeExists = await _bll.RegistryOfficeRepository.CheckIfRegistryOfficeExists(registryOfficeViewModel.DepartmentName);
+
+            if (registryOfficeExists)
+                return BadRequest("This registryOffice already exists in database!");
+
+            var departmentModel = await _bll.DepartmentRepository.GetDepartmentByName(registryOfficeViewModel.DepartmentName);
+
+            var registryModel = new RegistrationModel
+            {
+                Guid = Guid.NewGuid(),
+                BedCount = registryOfficeViewModel.BedCount,
+                DepartmentGuid = departmentModel.Guid
+            };
+
+            var createResult = await _bll.RegistryOfficeRepository.AddNewRegistryOffice(registryModel);
+
+            if (!createResult)
+                return InternalServerError();
+
+            var applicationModel = new ApplicationUserModel
+            {
+                UserName = registryOfficeViewModel.Email,
+                Email = registryOfficeViewModel.Email,
+                FirstName = registryOfficeViewModel.Email,
+                LastName = registryOfficeViewModel.Email,
+                Level = 2,
+                JoinDate = DateTime.Now.Date,
+                User_ID = registryModel.Guid
+            };
+
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(applicationModel, registryOfficeViewModel.Password);
+            var roles = _bll.IdentityRoleRepository.GetAll();
+
+            var currentUser = await UserManager.FindByEmailAsync(applicationModel.Email);
+
+            var roleResult = UserManager.AddToRole(currentUser.Id, "RegistryOffice");
+
+            if (!addUserResult.Succeeded)
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("api/account/create-laboratoryAnalysis")]
+        public async Task<IHttpActionResult> CreateLaboratoryAnalysis([FromBody] LaboratoryAnalysisViewModel laboratoryAnalysis)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var laboratoryAnalysisExists = await _bll.LaboratoryAnalysisRepository.CheckIfLaboratoryExists(laboratoryAnalysis.Name);
+
+            if (laboratoryAnalysisExists)
+                return BadRequest("This laboratoryAnalysis already exists in database!");
+
+            var laboratoryAnalysisModel = new LaboratoryModel
+            {
+                Guid = Guid.NewGuid(),
+                Name = laboratoryAnalysis.Name
+            };
+
+            var createResult = await _bll.LaboratoryAnalysisRepository.AddNewLaboratory(laboratoryAnalysisModel);
+
+            if (!createResult)
+                return InternalServerError();
+
+            var applicationModel = new ApplicationUserModel
+            {
+                UserName = laboratoryAnalysis.Email,
+                Email = laboratoryAnalysis.Email,
+                FirstName = laboratoryAnalysis.Email,
+                LastName = laboratoryAnalysis.Email,
+                Level = 2,
+                JoinDate = DateTime.Now.Date,
+                User_ID = laboratoryAnalysisModel.Guid
+            };
+
+            IdentityResult addUserResult = await this.AppUserManager.CreateAsync(applicationModel, laboratoryAnalysis.Password);
+            var roles = _bll.IdentityRoleRepository.GetAll();
+
+            var currentUser = await UserManager.FindByEmailAsync(applicationModel.Email);
+
+            var roleResult = UserManager.AddToRole(currentUser.Id, "LaboratoryAnalysis");
+
+            if (!addUserResult.Succeeded)
+                return InternalServerError();
+
+            return Ok();
+
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("api/account/{username}")]
+        public async Task<IHttpActionResult> GetAccountByUsername(string username)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(username);
+            username = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+
+            var user = await this.AppUserManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var roleID = user.Roles.FirstOrDefault();
+
+            var role = _bll.IdentityRoleRepository.GetRole(roleID.RoleId);
+
+            dynamic viewModel = new Object();
+
+            if (role.Name.Equals("Medic"))
+            {
+                var model = await _bll.MedicRepository.GetMedicByID(user.User_ID);
+                var role1 = "Medic";
+                return Ok(new {Model=model, Role=role1 });
+            }
+
+            else if (role.Name.Equals("RegistryOffice"))
+            {
+                var model = await _bll.RegistryOfficeRepository.GetRegistryOfficeByGuid(user.User_ID);
+                var role1 = "RegistryOffice";
+                return Ok(new { Model = model, Role = role1 });
+            }
+            else if (role.Name.Equals("LaboratoryAnalysis"))
+            {
+                var model = await _bll.LaboratoryAnalysisRepository.GetLaboratoryByGuid(user.User_ID);
+                var role1 = "LaboratoryAnalysis";
+                return Ok(new { Model = model, Role = role1 });
+            }
 
             return Ok();
         }

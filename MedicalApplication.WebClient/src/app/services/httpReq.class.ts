@@ -1,7 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { HttpRequest } from 'selenium-webdriver/http';
 
-
 export class HttpReq {
     readonly reqHeader: HttpHeaders;
     readonly noAuthReqHeader: HttpHeaders;
@@ -16,7 +15,46 @@ export class HttpReq {
         // 'http://localhost:49498'; // 'http://medappapi.azurewebsites.net';
     }
 
+    getAnalyzesByItemsPage(items: number, page: number): string {
+               return this.rootUrl + '/api/analyze/' + items + '/' + page;
+           }
+
+         getAddAnalyzezMappingRoute(): any {
+        return this.rootUrl + '/api/analyze/add-analyzeOfPatient';
+     }
+
+    getAllPatientsPathByMedicRoute(medicGuid: string ): string {
+        return this.rootUrl + '/api/patient/get-patients-by-medic/{' + medicGuid + '}';
+    }
     getTokenHeader() {
         return new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     }
+
+    getDataAboutLoggedMedicRoute(emailLogged: string): string {
+        const uint8array = btoa(emailLogged);
+        return this.rootUrl + '/api/account/' + uint8array ;
+    }
+
+    getPageAllPatientsPathByMedicRoute(medicGuid: string, items: number, page: number): string {
+        return this.rootUrl + '/api/patient/get-patients-by-medic/' + items + '/' + page + '/' + medicGuid ;
+    }
+
+    getAddPatientRoute() {
+        return this.rootUrl + '/api/patient/add-patient';
+    }
+
+    getDeletePatientRoute(patientGuid: string) {
+        return this.rootUrl + '/api/patient/delete-patient/' + patientGuid;
+    }
+
+    getPatientById(patientGuid: string) {
+        return this.rootUrl + '/api/patient/get-patient/' + patientGuid;
+    }
+
+    getAllPatientsPathByFirstName(search: string, items: number, page: number): string {
+           return this.rootUrl + '/api/patient/search-patients/' + search + '/' + items + '/' + page ;
+     }
+     getAllMappingAnalyzessLabRoute(items: number, page: number): string {
+        return this.rootUrl + '/api/analyze/get-mappingAnalyze/' + items + '/' + page ;
+      }
 }

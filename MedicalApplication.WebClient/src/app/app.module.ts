@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {MatButtonModule, MatCheckboxModule, MatIcon, MatIconModule, MatFormFieldModule,
-   MatInputModule, MatMenuModule, MatTableModule, MatSelectModule} from '@angular/material';
+   MatInputModule, MatMenuModule, MatTableModule, MatSelectModule,
+    MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule} from '@angular/material';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,8 +30,17 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { PatientComponent } from './components/patient/patient.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AddPatientDialogComponent } from './components/patient/add-patient-dialog/add-patient-dialog.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+import { LaboratoryComponent } from './components/laboratory/laboratory.component';
+// tslint:disable-next-line:max-line-length
+import { AddAnalysisDialogComponentComponent } from './components/laboratory/add-analysis-dialog-component/add-analysis-dialog-component.component';
+import { PermissionsService } from './services/permissions.service';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { UserRoleLaboratoryComponent } from './components/laboratory/user-role-laboratory/user-role-laboratory.component';
 
 
 @NgModule({
@@ -49,7 +59,14 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ProfileComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    PatientComponent
+    PatientComponent,
+    CalendarComponent,
+    AddPatientDialogComponent,
+      LoadingComponent,
+      AddAnalysisDialogComponentComponent,
+    LaboratoryComponent,
+    PatientDetailsComponent,
+    UserRoleLaboratoryComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +86,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HttpClientModule,
     ToastrModule.forRoot(),
     routing,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   exports:
     [MatButtonModule,
@@ -81,10 +103,16 @@ import { AuthInterceptor } from './auth/auth.interceptor';
      MatMenuModule,
      CdkTableModule,
      MatTableModule,
-     MatSelectModule
+     MatSelectModule,
+     MatDialogModule,
+     MatNativeDateModule,
+     MatDatepickerModule,
+     MatPaginatorModule,
+     MatProgressSpinnerModule
     ],
+    entryComponents: [AddPatientDialogComponent, PatientDetailsComponent, AddAnalysisDialogComponentComponent],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-     UserService, AuthGuard, SettingsService, RoutesService],
+     UserService, AuthGuard, RoutesService, PermissionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
